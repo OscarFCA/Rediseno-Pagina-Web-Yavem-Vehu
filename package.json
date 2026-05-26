@@ -1,0 +1,24 @@
+{
+  "name": "yavemvehuweb2",
+  "version": "1.0.0",
+  "description": "Rediseño del sitio web institucional de **Yabem Vehu**, empresa de seguridad privada con 15 años de experiencia en CDMX y Estado de México.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OscarFCA/Rediseno-Pagina-Web-Yavem-Vehu.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/OscarFCA/Rediseno-Pagina-Web-Yavem-Vehu/issues"
+  },
+  "homepage": "https://github.com/OscarFCA/Rediseno-Pagina-Web-Yavem-Vehu#readme",
+  "dependencies": {
+    "esbuild": "^0.28.0"
+  }
+}

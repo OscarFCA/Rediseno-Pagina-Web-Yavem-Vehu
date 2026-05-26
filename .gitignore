@@ -2,3 +2,4 @@
 .thumbnail
 *.log
 node_modules/
+assets/js/_bundle.entry.jsx
