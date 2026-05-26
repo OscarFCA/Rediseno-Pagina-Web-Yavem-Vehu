@@ -301,7 +301,7 @@ function CtaFinal({ title, body, primary = 'Solicitar cotización', primaryHref 
       <div className="container">
         <div className="cta-final__inner">
           <span className="section-marker" style={{ margin: '0 auto 16px' }}></span>
-          <h2 className="cta-final__title" style={{ fontSize: "40px" }}>{title}</h2>
+          <h2 className="cta-final__title" style={{ fontSize: "clamp(26px, 6vw, 40px)" }}>{title}</h2>
           <p className="cta-final__body">{body}</p>
           <div className="cta-final__ctas">
             <a className="btn btn-primary" onClick={(e) => {e.preventDefault();navigate(primaryHref);}} href={primaryHref}>{primary}</a>

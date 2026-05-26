@@ -29,7 +29,7 @@ function HomePage() {
         <div className="container hero__inner">
           <div className="hero__content">
             <span className="eyebrow eyebrow--light">Seguridad Privada</span>
-            <h1 className="hero__headline" style={{ fontSize: "70px" }}>Protegemos lo que más te importa</h1>
+            <h1 className="hero__headline" style={{ fontSize: "clamp(34px, 8.5vw, 70px)" }}>Protegemos lo que más te importa</h1>
             <p className="hero__subtitle">Más de 15 años protegiendo activos en los sectores Farmacéutico, Textil, Automotriz y Residencial.
 
             </p>
@@ -145,7 +145,7 @@ function NosotrosPage() {
           <div className="about-grid">
             <div>
               <span className="section-marker"></span>
-              <h2 className="section__title" style={{ fontSize: "40px" }}>¿Quiénes somos?</h2>
+              <h2 className="section__title" style={{ fontSize: "clamp(26px, 6vw, 40px)" }}>¿Quiénes somos?</h2>
               <div className="about-grid__body mt-3">
                 <p>Somos una empresa <strong style={{ color: 'var(--color-primary)' }}>100% mexicana</strong> y sus aliados estratégicos en protección. Hemos consolidado un legado de confianza y tranquilidad para nuestros clientes.</p>
                 <p>Nuestra fortaleza radica en la excelencia operativa y el estricto cumplimiento normativo. No solo garantizamos servicios de seguridad de la más alta calidad, sino que aseguramos la total legalidad y transparencia en cada operación, contando con todos los permisos y registros vigentes.</p>
@@ -167,7 +167,7 @@ function NosotrosPage() {
         <div className="container">
           <div className="section__header">
             <span className="section-marker"></span>
-            <h2 className="section__title" style={{ fontSize: "40px" }}>Experiencia de nuestro equipo</h2>
+            <h2 className="section__title" style={{ fontSize: "clamp(26px, 6vw, 40px)" }}>Experiencia de nuestro equipo</h2>
           </div>
           <div className="cards-grid">
             <article className="card">
@@ -189,7 +189,7 @@ function NosotrosPage() {
         <div className="container">
           <div className="section__header section__header--centered">
             <span className="section-marker"></span>
-            <h2 className="section__title" style={{ fontSize: "40px" }}>Nuestros principios</h2>
+            <h2 className="section__title" style={{ fontSize: "clamp(26px, 6vw, 40px)" }}>Nuestros principios</h2>
             <p className="section__subtitle">La brújula que guía cada operación, cada turno y cada decisión.</p>
           </div>
           <div className="principles">
@@ -254,7 +254,7 @@ function NosotrosPage() {
         <div className="container">
           <div className="section__header">
             <span className="section-marker"></span>
-            <h2 className="section__title" style={{ fontSize: "40px" }}>Por qué elegirnos</h2>
+            <h2 className="section__title" style={{ fontSize: "clamp(26px, 6vw, 40px)" }}>Por qué elegirnos</h2>
             <p className="section__subtitle">
               Elegir a Yabem Vehu es optar por un socio de seguridad con visión de futuro y compromiso total. Nos distinguimos por nuestro estricto cumplimiento normativo, operando siempre con todos los permisos y registros en regla.
             </p>
@@ -323,7 +323,7 @@ function PainSection({ title, items }) {
       <div className="container">
         <div className="section__header">
           <span className="section-marker"></span>
-          <h2 className="section__title" style={{ fontSize: "40px" }}>{title}</h2>
+          <h2 className="section__title" style={{ fontSize: "clamp(26px, 6vw, 40px)" }}>{title}</h2>
         </div>
         <div className="cards-grid cards-grid--3">
           {items.map((it, i) =>
@@ -345,7 +345,7 @@ function ValueSection({ title, items, surface = true }) {
       <div className="container">
         <div className="section__header">
           <span className="section-marker"></span>
-          <h2 className="section__title" style={{ fontSize: "40px" }}>{title}</h2>
+          <h2 className="section__title" style={{ fontSize: "clamp(26px, 6vw, 40px)" }}>{title}</h2>
         </div>
         <div className="value-list">
           {items.map((it, i) =>
@@ -388,7 +388,7 @@ function StepsSection({ title, steps, surface = false, navy = false }) {
       <div className="container">
         <div className="section__header">
           <span className="section-marker"></span>
-          <h2 className="section__title" style={{ fontSize: "40px" }}>{title}</h2>
+          <h2 className="section__title" style={{ fontSize: "clamp(26px, 6vw, 40px)" }}>{title}</h2>
         </div>
         <div className="steps">
           {steps.map((s, i) =>
@@ -438,7 +438,7 @@ function FinalFormSection({ title, subtitle, buttonText, hideGuardias = false, w
         <div className="contact-layout">
           <div>
             <span className="eyebrow eyebrow--light">Cotización</span>
-            <h2 className="section__title" style={{ color: '#fff', fontSize: "40px" }}>{title}</h2>
+            <h2 className="section__title" style={{ color: '#fff', fontSize: "clamp(26px, 6vw, 40px)" }}>{title}</h2>
             <p className="section__subtitle">{subtitle}</p>
             <p className="mt-3 muted" style={{ color: 'rgba(255,255,255,0.7)', fontSize: 15 }}>
               ¿Prefieres hablar ahora? &nbsp;
@@ -542,7 +542,7 @@ function GuardiasPage() {
         <div className="container">
           <div className="section__header section__header--centered">
             <span className="section-marker"></span>
-            <h2 className="section__title" style={{ fontSize: "40px" }}>Confianza de quienes nos contratan</h2>
+            <h2 className="section__title" style={{ fontSize: "clamp(26px, 6vw, 40px)" }}>Confianza de quienes nos contratan</h2>
           </div>
           <div className="testimonials testimonials--carousel">
             <TestimonialCarousel />
@@ -988,7 +988,7 @@ function OportunidadesPage() {
         <div className="container">
           <div className="section__header">
             <span className="section-marker"></span>
-            <h2 className="section__title" style={{ fontSize: "40px" }}>¿Qué buscamos en ti?</h2>
+            <h2 className="section__title" style={{ fontSize: "clamp(26px, 6vw, 40px)" }}>¿Qué buscamos en ti?</h2>
             <p className="section__subtitle" style={{ maxWidth: 720 }}>El perfil que valoramos no se trata sólo de experiencia previa. Buscamos personas con actitud y vocación de servicio.</p>
           </div>
           <div className="cards-grid cards-grid--3">
@@ -1048,7 +1048,7 @@ function OportunidadesPage() {
           <div className="contact-layout">
             <div>
               <span className="eyebrow eyebrow--light">Postúlate ahora</span>
-              <h2 className="hero__headline" style={{ fontSize: 44, marginBottom: 16 }}>Únete al equipo que protege a más de 50 empresas en CDMX</h2>
+              <h2 className="hero__headline" style={{ fontSize: "clamp(28px, 6.5vw, 44px)", marginBottom: 16 }}>Únete al equipo que protege a más de 50 empresas en CDMX</h2>
               <p className="hero__subtitle" style={{ marginBottom: 28 }}>Déjanos tus datos y un mensaje breve sobre ti. Si tu perfil coincide con una vacante abierta, nuestro equipo de Gestión Humana te contactará en los próximos días hábiles.</p>
 
               <div className="contact-cards" style={{ maxWidth: 380 }}>
