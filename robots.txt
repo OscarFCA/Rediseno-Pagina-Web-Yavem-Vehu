@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /assets/js/
+
+Sitemap: https://oscarfca.github.io/Rediseno-Pagina-Web-Yavem-Vehu/sitemap.xml
