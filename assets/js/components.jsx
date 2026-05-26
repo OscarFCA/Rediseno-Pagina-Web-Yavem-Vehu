@@ -721,7 +721,7 @@ function PageHero({ eyebrow, title, subtitle, variant, primary = 'Solicitar coti
     <section className="hero" data-screen-label="Hero">
       <div className="container hero__inner">
         <div className="hero__grid">
-          <div style={{ width: "543px" }}>
+          <div style={{ width: "100%", maxWidth: "543px" }}>
             <span className="eyebrow eyebrow--light">{eyebrow}</span>
             <h1 className="hero__headline">{title}</h1>
             <p className="hero__subtitle">{subtitle}</p>

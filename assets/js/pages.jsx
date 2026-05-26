@@ -464,7 +464,7 @@ function FinalFormSection({ title, subtitle, buttonText, hideGuardias = false, w
               </a>
             </div>
           </div>
-          <div className="contact-layout__form" style={{ width: "430px" }}>
+          <div className="contact-layout__form" style={{ width: "100%", maxWidth: "430px" }}>
             <QualForm buttonText={buttonText} hideGuardias={hideGuardias} />
           </div>
         </div>
@@ -1071,7 +1071,7 @@ function OportunidadesPage() {
               </div>
             </div>
 
-            <div className="contact-layout__form" style={{ width: "430px" }}>
+            <div className="contact-layout__form" style={{ width: "100%", maxWidth: "430px" }}>
               <CareerForm />
             </div>
           </div>
