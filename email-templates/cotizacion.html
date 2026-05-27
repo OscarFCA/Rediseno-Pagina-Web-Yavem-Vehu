@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nuevo lead — {{empresa}}</title>
+<!--[if mso]><style>td,h1,h2,h3,p{font-family:Arial,sans-serif!important}</style><![endif]-->
+</head>
+<body style="margin:0;padding:0;background:#F4F6F8;font-family:'Inter','Helvetica Neue',Arial,sans-serif;color:#202F4F;-webkit-text-size-adjust:100%;">
+<div style="display:none;max-height:0;overflow:hidden;color:transparent;mso-hide:all;">{{nivel_texto}} · {{score}}/100 · {{empresa}} — {{servicio}}</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#F4F6F8;padding:32px 16px;">
+<tr><td align="center">
+
+<!-- Card -->
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+
+  <!-- Header navy con marca -->
+  <tr>
+    <td style="background:#202F4F;padding:24px 32px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);">
+            Yabem-Vehu · Nuevo lead de cotización
+          </td>
+          <td align="right" style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.7);">
+            yabem-vehu.com.mx
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Nivel banner (color según nivel — se sobreescribe con var) -->
+  <tr>
+    <td style="background:#992824;padding:24px 32px;border-bottom:4px solid #7A1F1C;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td valign="middle">
+            <div style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:4px;">
+              {{nivel_emoji}} Nivel {{nivel}}
+            </div>
+            <div style="font-size:24px;font-weight:700;line-height:1.2;color:#FFFFFF;">
+              {{nivel_texto}}
+            </div>
+            <div style="font-size:14px;line-height:1.4;color:rgba(255,255,255,0.92);margin-top:8px;">
+              {{nivel_tiempo}}
+            </div>
+          </td>
+          <td valign="middle" align="right" style="padding-left:16px;">
+            <div style="background:rgba(255,255,255,0.12);border:2px solid rgba(255,255,255,0.4);border-radius:12px;padding:14px 20px;text-align:center;min-width:96px;">
+              <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:2px;">Score</div>
+              <div style="font-size:32px;font-weight:700;line-height:1;color:#FFFFFF;">{{score}}<span style="font-size:14px;font-weight:400;opacity:0.6;">/100</span></div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Datos del prospecto -->
+  <tr>
+    <td style="padding:32px 32px 8px 32px;">
+      <div style="display:inline-block;width:48px;height:4px;background:#992824;border-radius:2px;margin-bottom:12px;"></div>
+      <h2 style="margin:0 0 16px 0;font-size:18px;font-weight:700;color:#202F4F;letter-spacing:-0.01em;">Datos del prospecto</h2>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+        <tr>
+          <td width="40%" style="padding:10px 0;border-bottom:1px solid #E2E8F0;font-size:13px;font-weight:700;color:#777678;letter-spacing:0.04em;text-transform:uppercase;">Nombre</td>
+          <td style="padding:10px 0;border-bottom:1px solid #E2E8F0;font-size:15px;font-weight:700;color:#202F4F;">{{from_name}}</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid #E2E8F0;font-size:13px;font-weight:700;color:#777678;letter-spacing:0.04em;text-transform:uppercase;">Empresa</td>
+          <td style="padding:10px 0;border-bottom:1px solid #E2E8F0;font-size:15px;color:#202F4F;">{{empresa}}</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid #E2E8F0;font-size:13px;font-weight:700;color:#777678;letter-spacing:0.04em;text-transform:uppercase;">Correo</td>
+          <td style="padding:10px 0;border-bottom:1px solid #E2E8F0;font-size:15px;color:#202F4F;"><a href="mailto:{{email}}" style="color:#992824;text-decoration:none;font-weight:700;">{{email}}</a></td>
+        </tr>
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid #E2E8F0;font-size:13px;font-weight:700;color:#777678;letter-spacing:0.04em;text-transform:uppercase;">Teléfono</td>
+          <td style="padding:10px 0;border-bottom:1px solid #E2E8F0;font-size:15px;color:#202F4F;"><a href="tel:{{telefono}}" style="color:#992824;text-decoration:none;font-weight:700;">{{telefono}}</a></td>
+        </tr>
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid #E2E8F0;font-size:13px;font-weight:700;color:#777678;letter-spacing:0.04em;text-transform:uppercase;">Servicio</td>
+          <td style="padding:10px 0;border-bottom:1px solid #E2E8F0;font-size:15px;color:#202F4F;">{{servicio}}</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid #E2E8F0;font-size:13px;font-weight:700;color:#777678;letter-spacing:0.04em;text-transform:uppercase;">Guardias</td>
+          <td style="padding:10px 0;border-bottom:1px solid #E2E8F0;font-size:15px;color:#202F4F;">{{guardias}}</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 0;font-size:13px;font-weight:700;color:#777678;letter-spacing:0.04em;text-transform:uppercase;">Zona(s)</td>
+          <td style="padding:10px 0;font-size:15px;color:#202F4F;">{{zonas}}</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Mensaje -->
+  <tr>
+    <td style="padding:24px 32px 8px 32px;">
+      <div style="display:inline-block;width:48px;height:4px;background:#992824;border-radius:2px;margin-bottom:12px;"></div>
+      <h2 style="margin:0 0 12px 0;font-size:18px;font-weight:700;color:#202F4F;letter-spacing:-0.01em;">Mensaje del prospecto</h2>
+      <div style="background:#F4F6F8;border-left:4px solid #202F4F;border-radius:0 8px 8px 0;padding:16px 20px;font-size:15px;line-height:1.6;color:#202F4F;">
+        {{mensaje}}
+      </div>
+    </td>
+  </tr>
+
+  <!-- CTAs -->
+  <tr>
+    <td style="padding:24px 32px 32px 32px;" align="center">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td style="padding-right:8px;">
+            <a href="https://wa.me/525578792146?text=Hola%2C%20vi%20tu%20cotizaci%C3%B3n%20en%20yabem-vehu.com.mx" style="display:inline-block;background:#25D366;color:#FFFFFF;font-weight:700;font-size:15px;padding:12px 24px;border-radius:8px;text-decoration:none;">WhatsApp al prospecto</a>
+          </td>
+          <td style="padding-left:8px;">
+            <a href="mailto:{{reply_to}}" style="display:inline-block;background:#202F4F;color:#FFFFFF;font-weight:700;font-size:15px;padding:12px 24px;border-radius:8px;text-decoration:none;">Responder por correo</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Scoring breakdown -->
+  <tr>
+    <td style="background:#F4F6F8;padding:20px 32px;border-top:1px solid #E2E8F0;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#777678;margin-bottom:10px;">Detalle del scoring (interno)</div>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr style="font-size:13px;color:#202F4F;">
+          <td style="padding:4px 8px 4px 0;"><b>Servicio:</b> {{b_servicio}}</td>
+          <td style="padding:4px 8px;"><b>Guardias:</b> {{b_guardias}}</td>
+          <td style="padding:4px 8px;"><b>Zona:</b> {{b_zona}}</td>
+          <td style="padding:4px 8px;"><b>Correo:</b> {{b_correo}}</td>
+          <td style="padding:4px 0 4px 8px;"><b>Empresa:</b> {{b_empresa}}</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+</table>
+
+<!-- Footer -->
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;margin-top:16px;">
+<tr><td align="center" style="font-size:12px;color:#777678;line-height:1.6;padding:8px 32px;">
+  <b style="color:#202F4F;">Empresarial Yabem-Vehu S.A. de C.V.</b><br>
+  Insurgentes Sur 216, interior 206-5, Ciudad de México<br>
+  REPSE ARR23960/2024 · DGSP CDMX 0605-15<br>
+  <span style="color:#992824;">El Factor Humano de su Seguridad</span><br><br>
+  Lead generado desde yabem-vehu.com.mx · {{lang}}
+</td></tr>
+</table>
+
+</td></tr>
+</table>
+</body>
+</html>
