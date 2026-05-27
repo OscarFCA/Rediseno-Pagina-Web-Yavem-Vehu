@@ -1050,7 +1050,7 @@ function OportunidadesPage() {
             <div className="step">
               <div className="step__num">04</div>
               <h3 className="step__title">Bienvenida e inducción</h3>
-              <p className="step__body">Capacitación inicial certificada y asignación a la operación de un cliente.</p>
+              <p className="step__body">Capacitación inicial y asignación a la operación de un cliente.</p>
             </div>
           </div>
         </div>
@@ -1073,11 +1073,11 @@ function OportunidadesPage() {
                     <div className="contact-card__sub">Respuesta inmediata en horario de oficina.</div>
                   </div>
                 </a>
-                <a className="contact-card" href="mailto:rh@yabem-vehu.com">
+                <a className="contact-card" href="mailto:contacto@yabem-vehu.com">
                   <div className="contact-card__icon"><Icon.Mail size={20} /></div>
                   <div>
                     <div className="contact-card__title">Correo de reclutamiento</div>
-                    <div className="contact-card__value">rh@yabem-vehu.com</div>
+                    <div className="contact-card__value">contacto@yabem-vehu.com</div>
                     <div className="contact-card__sub">Envíanos tu CV directo.</div>
                   </div>
                 </a>
