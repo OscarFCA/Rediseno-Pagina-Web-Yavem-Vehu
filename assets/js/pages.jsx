@@ -367,12 +367,16 @@ function SectorsSection({ title, sectors, surface = false }) {
           <h2 className="section__title">{title}</h2>
         </div>
         <div className="sectors-grid">
-          {sectors.map((s, i) =>
-          <article className="sector-card" key={i}>
-              <h3 className="sector-card__title">{s.title}</h3>
-              <p className="sector-card__body">{s.body}</p>
-            </article>
-          )}
+          {sectors.map((s, i) => {
+            const IconComp = s.icon && Icon[s.icon];
+            return (
+              <article className="sector-card" key={i}>
+                {IconComp && <div className="sector-card__icon"><IconComp size={28} /></div>}
+                <h3 className="sector-card__title">{s.title}</h3>
+                <p className="sector-card__body">{s.body}</p>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>);
@@ -480,12 +484,12 @@ function GuardiasPage() {
       <PageHero
         eyebrow="Guardias de Seguridad"
         title="Seguridad Intramuros para tus Activos Empresariales"
-        subtitle="Profesionales certificados, seleccionados con rigor y capacitados bajo estándares federales. Tu operación, protegida."
+        subtitle="Profesionales certificados, seleccionados con rigor y capacitados bajo estándares internacionales. Tu operación, protegida."
         variant="guardias"
         primary="Solicitar cotización"
         secondary="Cotizar ahora"
         secondaryHref={waLink(WA_MESSAGES.guardias)}
-        badges={['ASIS Member', 'DGSP CDMX 0605-15 / Exp. 3788-14', 'REPSE Activo']} />
+        badges={['ASIS Member', 'DGSP CDMX · Permiso 0605-15 · Exp. 3788-14', 'REPSE Activo']} />
       
 
       <PainSection
@@ -501,7 +505,7 @@ function GuardiasPage() {
         title={<>Por qué nuestros guardias<br />son diferentes</>}
         items={[
         { title: 'Selección con más de 30 criterios', body: 'Cada guardia pasa por un proceso riguroso: evaluación psicométrica, antecedentes, capacitación certificada y prueba de campo antes de ingresar a tu instalación.' },
-        { title: 'Capacitación bajo estándares federales', body: 'Formación continua apegada a la Ley Federal de Seguridad Privada y estándares de competencia CONOCER-SEP.' },
+        { title: 'Capacitación bajo estándares internacionales', body: 'Formación continua apegada a la Ley Federal de Seguridad Privada y estándares de competencia CONOCER-SEP.' },
         { title: 'REPSE activo ARR23960/2024', body: 'Contratar con Yabem-Vehu no genera contingencias laborales para tu empresa. Operamos 100% dentro del marco legal.' }]
         } />
       
@@ -509,10 +513,14 @@ function GuardiasPage() {
       <SectorsSection
         title="Experiencia en tu sector"
         sectors={[
-        { title: 'Farmacéutico', body: 'Control de acceso a almacenes, laboratorios y áreas restringidas. Protocolo de manejo de materiales sensibles.' },
-        { title: 'Textil', body: 'Prevención de robo en almacenes y líneas de producción. Reducción comprobada de merma en instalaciones activas.' },
-        { title: 'Residencial y Corporativo', body: 'Control de acceso de personas y vehículos. Rondines programados. Comunicación directa con administración.' },
-        { title: 'Industrial', body: 'Vigilancia perimetral, control de carga y descarga, protección de maquinaria y activos de alto valor.' }]
+        { icon: 'Flask',       title: 'Farmacéutico',  body: 'Control de acceso a laboratorios, almacenes de materia prima y áreas de manufactura. Protección de activos regulados y cadena de custodia certificada.' },
+        { icon: 'Car',         title: 'Automotriz',    body: 'Seguridad en agencias, talleres y patios de vehículos. Control de acceso de personal, proveedores y clientes. Prevención de robo de partes y unidades.' },
+        { icon: 'ShoppingBag', title: 'Retail',        body: 'Prevención de merma en tienda, control de acceso a bodegas y protección de cajas. Guardias entrenados para entornos de alto flujo de personas.' },
+        { icon: 'Scissors',    title: 'Textil',        body: 'Diagnóstico y reducción de merma en líneas de producción y almacenes. Identificación de vectores de robo interno y externo en plantas activas.' },
+        { icon: 'Wrench',      title: 'Industrial',    body: 'Vigilancia perimetral, control de carga y descarga, y protección de maquinaria de alto valor. Esquemas de seguridad para operaciones 24/7.' },
+        { icon: 'Home',        title: 'Residencial',   body: 'Control de acceso vehicular y peatonal, rondines programados y comunicación directa con administración. Servicio para fraccionamientos, condominios y torres corporativas.' },
+        { icon: 'Building',    title: 'Corporativo',   body: 'Protección de instalaciones de oficinas, control de visitantes y colaboradores, y protocolos de respuesta ante incidentes en edificios con múltiples inquilinos.' },
+        { icon: 'HardHat',     title: 'Construcción',  body: 'Custodia de materiales, maquinaria y equipo en obra. Control de acceso de trabajadores y proveedores. Vigilancia nocturna y en fines de semana cuando la obra está sin personal.' }]
         } />
       
 
@@ -531,10 +539,10 @@ function GuardiasPage() {
         title="Operamos con todos los permisos en regla"
         items={[
         { logo: 'assets/img/cert-repse.webp', title: 'REPSE', code: 'ARR23960/2024', body: 'Registro de Prestadoras de Servicios Especializados ante la STPS. Contratar con nosotros no te genera riesgos laborales.' },
-        { logo: 'assets/img/cert-ssc.webp', title: 'DGSP CDMX 0605-15 / Exp. 3788-14', code: 'Permiso 0605-15', body: 'Autorización vigente de la Secretaría de Seguridad Ciudadana de la CDMX.' },
+        { logo: 'assets/img/cert-ssc.webp', title: 'DGSP CDMX', code: 'Permiso 0605-15 · Expediente 3788-14', body: 'Dirección General de Seguridad Privada de la Ciudad de México (DGSP CDMX), permiso 0605-15, expediente 3788-14. Autorización vigente para operar en la CDMX.' },
         { logo: 'assets/img/cert-asis.webp', title: 'ASIS International', code: 'Member', body: 'Nuestros directivos reciben formación de vanguardia en seguridad.' }]
         } />
-      
+
 
       <section className="section" data-screen-label="Testimonio">
         <div className="container">
