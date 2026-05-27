@@ -912,6 +912,20 @@ function CareerForm() {
     if (values.honeypot) return; // bot
     setErrors(errs);
     if (Object.keys(errs).length === 0) {
+      const puestoLabel = (PUESTOS.find((p) => p.value === values.puesto) || {}).label || values.puesto;
+      const subject = `Postulación — ${puestoLabel} — ${values.nombre}`;
+      const body =
+        `Hola, equipo de Gestión Humana de Yabem-Vehu:\n\n` +
+        `Quisiera postularme a una vacante. Mis datos:\n\n` +
+        `• Nombre completo: ${values.nombre}\n` +
+        `• Teléfono: ${values.telefono}\n` +
+        `• Correo electrónico: ${values.email || '(no proporcionado)'}\n` +
+        `• Puesto de interés: ${puestoLabel}\n\n` +
+        `Sobre mí:\n${values.mensaje}\n\n` +
+        `Quedo atento a su respuesta.\nGracias.`;
+      const mailto = `mailto:contacto@yabem-vehu.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      if (window.yvTrack) window.yvTrack('career_form_submit', { puesto: values.puesto });
+      window.location.href = mailto;
       setSent(true);
     }
   }
