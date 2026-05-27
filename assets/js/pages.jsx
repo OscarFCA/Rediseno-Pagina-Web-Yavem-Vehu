@@ -902,10 +902,11 @@ function CareerForm() {
   });
   const [errors, setErrors] = useState({});
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
 
   const set = (k) => (e) => setValues((v) => ({ ...v, [k]: e.target.value }));
 
-  function submit(e) {
+  async function submit(e) {
     e.preventDefault();
     const errs = {};
     if (!values.nombre.trim()) errs.nombre = 'Ingresa tu nombre completo.';
@@ -914,8 +915,30 @@ function CareerForm() {
     if (!values.mensaje.trim()) errs.mensaje = 'Cuéntanos brevemente sobre ti.';
     if (values.honeypot) return; // bot
     setErrors(errs);
-    if (Object.keys(errs).length === 0) {
-      const puestoLabel = (PUESTOS.find((p) => p.value === values.puesto) || {}).label || values.puesto;
+    if (Object.keys(errs).length > 0) return;
+
+    const puestoLabel = (PUESTOS.find((p) => p.value === values.puesto) || {}).label || values.puesto;
+    if (window.yvTrack) window.yvTrack('career_form_submit', { puesto: values.puesto });
+
+    setSending(true);
+    const payload = {
+      from_name: values.nombre,
+      telefono:  values.telefono,
+      email:     values.email || '(no proporcionado)',
+      reply_to:  values.email || 'contacto@yabem-vehu.com',
+      puesto:    puestoLabel,
+      mensaje:   values.mensaje
+    };
+    try {
+      if (window.emailjs && window.EMAILJS_SERVICE_ID && window.EMAILJS_TEMPLATE_POSTULACION) {
+        await window.emailjs.send(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_POSTULACION, payload);
+        setSent(true);
+      } else {
+        throw new Error('EmailJS no disponible');
+      }
+    } catch (err) {
+      console.error('EmailJS send failed (postulación):', err);
+      // Fallback: cliente de correo del usuario
       const subject = `Postulación — ${puestoLabel} — ${values.nombre}`;
       const body =
         `Hola, equipo de Gestión Humana de Yabem-Vehu:\n\n` +
@@ -926,10 +949,10 @@ function CareerForm() {
         `• Puesto de interés: ${puestoLabel}\n\n` +
         `Sobre mí:\n${values.mensaje}\n\n` +
         `Quedo atento a su respuesta.\nGracias.`;
-      const mailto = `mailto:contacto@yabem-vehu.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      if (window.yvTrack) window.yvTrack('career_form_submit', { puesto: values.puesto });
-      window.location.href = mailto;
+      window.location.href = `mailto:contacto@yabem-vehu.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       setSent(true);
+    } finally {
+      setSending(false);
     }
   }
 
@@ -992,7 +1015,7 @@ function CareerForm() {
         {errors.mensaje && <div className="form-error">{errors.mensaje}</div>}
       </div>
 
-      <button type="submit" className="btn btn-primary btn-full">Enviar postulación</button>
+      <button type="submit" className="btn btn-primary btn-full" disabled={sending}>{sending ? 'Enviando…' : 'Enviar postulación'}</button>
 
       <div className="form-help">
         <Icon.Lock size={14} /> Tu información se utiliza únicamente para procesos de reclutamiento interno.

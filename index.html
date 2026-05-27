@@ -139,6 +139,18 @@
     </div>
   </noscript>
 
+  <!-- EmailJS — envío de formularios (cotización + postulación) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script defer>
+    window.EMAILJS_PUBLIC_KEY            = 'Cq8DWV0u4k_Q_W3rk';
+    window.EMAILJS_SERVICE_ID            = 'service_9p3bzrh';
+    window.EMAILJS_TEMPLATE_COTIZACION   = 'template_jbfg0n3';
+    window.EMAILJS_TEMPLATE_POSTULACION  = 'template_3si3o3p';
+    window.addEventListener('DOMContentLoaded', function(){
+      if (window.emailjs) { try { window.emailjs.init({ publicKey: window.EMAILJS_PUBLIC_KEY }); } catch(e){ console.error('EmailJS init failed', e); } }
+    });
+  </script>
+
   <script defer src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script defer src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
   <script defer src="assets/js/bundle.min.js"></script>

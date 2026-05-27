@@ -654,6 +654,31 @@ function buildLeadMailto(values, score, level, breakdown) {
   return `mailto:ventas@yabem-vehu.com?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(lines.join('\n'))}`;
 }
 
+function buildLeadPayload(values, score, level, breakdown) {
+  return {
+    from_name:    values.nombre || '',
+    empresa:      values.empresa || '(no proporcionada)',
+    email:        values.email || '',
+    telefono:     values.telefono || '(no proporcionado)',
+    reply_to:     values.email || 'ventas@yabem-vehu.com',
+    servicio:     SERVICE_LABELS[values.servicio] || 'No especificado',
+    guardias:     values.guardias || '(no aplica)',
+    zonas:        (values.zona || []).join(', ') || '(no especificada)',
+    mensaje:      values.mensaje || '(sin mensaje)',
+    score:        String(score),
+    nivel:        level.nivel,
+    nivel_emoji:  level.emoji,
+    nivel_texto:  level.texto,
+    nivel_tiempo: level.tiempo,
+    b_servicio:   String(breakdown.servicio),
+    b_guardias:   String(breakdown.guardias),
+    b_zona:       String(breakdown.zona),
+    b_correo:     String(breakdown.correo),
+    b_empresa:    String(breakdown.empresa),
+    lang:         'es-MX'
+  };
+}
+
 function QualForm({ buttonText = 'Solicitar cotización', includeService = false, includePhone = false, includeMessage = false, hideGuardias = false, defaultService = '', onSubmit }) {
   const [values, setValues] = useState({
     nombre: '', empresa: '', email: '', telefono: '',
@@ -661,10 +686,12 @@ function QualForm({ buttonText = 'Solicitar cotización', includeService = false
   });
   const [errors, setErrors] = useState({});
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState(false);
 
   const set = (k) => (e) => setValues((v) => ({ ...v, [k]: e.target.value }));
 
-  function submit(e) {
+  async function submit(e) {
     e.preventDefault();
     const errs = {};
     if (!values.nombre.trim()) errs.nombre = 'Ingresa tu nombre completo.';
@@ -677,25 +704,43 @@ function QualForm({ buttonText = 'Solicitar cotización', includeService = false
     if (!values.zona || values.zona.length === 0) errs.zona = 'Selecciona al menos un estado.';
     if (values.honeypot) return; // bot
     setErrors(errs);
-    if (Object.keys(errs).length === 0) {
-      const effectiveServicio = values.servicio || defaultService || 'indeciso';
-      const enriched = { ...values, servicio: effectiveServicio };
-      const { score, descalificado, breakdown } = calcLeadScore(enriched);
-      const level = classifyLead(score, descalificado);
-      if (window.yvTrack) {
-        window.yvTrack('lead_form_submit', {
-          score: score, nivel: level.nivel,
-          servicio: effectiveServicio, guardias: enriched.guardias || '',
-          zonas: (enriched.zona || []).join('|')
-        });
-      }
-      if (onSubmit) {
-        onSubmit({ ...enriched, _score: score, _nivel: level.nivel, _descalificado: descalificado });
-      } else {
-        // Default: abre cliente de correo con asunto/cuerpo prerellenados a contacto@yabem-vehu.com
-        window.location.href = buildLeadMailto(enriched, score, level, breakdown);
-      }
+    if (Object.keys(errs).length > 0) return;
+
+    const effectiveServicio = values.servicio || defaultService || 'indeciso';
+    const enriched = { ...values, servicio: effectiveServicio };
+    const { score, descalificado, breakdown } = calcLeadScore(enriched);
+    const level = classifyLead(score, descalificado);
+    if (window.yvTrack) {
+      window.yvTrack('lead_form_submit', {
+        score: score, nivel: level.nivel,
+        servicio: effectiveServicio, guardias: enriched.guardias || '',
+        zonas: (enriched.zona || []).join('|')
+      });
+    }
+    if (onSubmit) {
+      onSubmit({ ...enriched, _score: score, _nivel: level.nivel, _descalificado: descalificado });
       setSent(true);
+      return;
+    }
+
+    setSending(true); setSendError(false);
+    const payload = buildLeadPayload(enriched, score, level, breakdown);
+    try {
+      if (window.emailjs && window.EMAILJS_SERVICE_ID && window.EMAILJS_TEMPLATE_COTIZACION) {
+        await window.emailjs.send(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_COTIZACION, payload);
+        if (window.yvTrack) window.yvTrack('lead_email_sent', { nivel: level.nivel });
+        setSent(true);
+      } else {
+        throw new Error('EmailJS no disponible');
+      }
+    } catch (err) {
+      console.error('EmailJS send failed:', err);
+      if (window.yvTrack) window.yvTrack('lead_email_fallback_mailto', {});
+      // Fallback: cliente de correo del usuario
+      window.location.href = buildLeadMailto(enriched, score, level, breakdown);
+      setSent(true);
+    } finally {
+      setSending(false);
     }
   }
 
@@ -803,7 +848,7 @@ function QualForm({ buttonText = 'Solicitar cotización', includeService = false
         </div>
       }
 
-      <button type="submit" className="btn btn-primary btn-full">{buttonText}</button>
+      <button type="submit" className="btn btn-primary btn-full" disabled={sending}>{sending ? 'Enviando…' : buttonText}</button>
 
       <div className="form-help">
         <Icon.Lock size={14} /> Tu información es confidencial. Respondemos en menos de 24 horas hábiles.
