@@ -230,15 +230,15 @@ function Footer() {
             <div className="footer__contact">
               <div className="footer__contact-item"><Icon.Mail size={16} /> ventas@yabem-vehu.com</div>
               <div className="footer__contact-item"><Icon.Phone size={16} /> +52 55 7879 2146</div>
-              <div className="footer__contact-item"><Icon.MapPin size={16} /> Av. Insurgentes Sur No. 216, Int. 206, Col. Roma Norte, Alcaldía Cuauhtémoc, CDMX</div>
+              <div className="footer__contact-item"><Icon.MapPin size={16} /> Insurgentes Sur 216, interior 206-5, Ciudad de México</div>
             </div>
           </div>
           <div>
             <div className="footer__col-title">Síguenos</div>
             <div className="footer__social">
-              <a href="#" aria-label="Facebook"><Icon.Facebook /></a>
-              <a href="#" aria-label="Facebook Reclutamiento"><Icon.Facebook /></a>
-              <a href="#" aria-label="LinkedIn"><Icon.Linkedin /></a>
+              <a href="https://www.facebook.com/EmpresarialYabemVehu" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Icon.Facebook /></a>
+              <a href="https://www.facebook.com/ReclutamientoYabemVehu" target="_blank" rel="noopener noreferrer" aria-label="Facebook Reclutamiento"><Icon.Facebook /></a>
+              <a href="https://www.linkedin.com/company/yabem-vehu/posts/?feedView=all" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Icon.Linkedin /></a>
             </div>
           </div>
         </div>

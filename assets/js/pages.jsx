@@ -849,9 +849,9 @@ function ContactoPage() {
                   <div>
                     <div className="contact-card__title">Oficinas</div>
                     <div className="contact-card__value" style={{ fontSize: 14, lineHeight: 1.5 }}>
-                      Av. Insurgentes Sur No. 216, Int. 206, Col. Roma Norte, Alcaldía Cuauhtémoc, CDMX
+                      Insurgentes Sur 216, interior 206-5, Ciudad de México. (Yabem-Vehu)
                     </div>
-                    <div className="contact-card__sub" style={{ marginTop: 6 }}>Lun–Vie 9:00–18:00 · Sáb 9:00–14:00</div>
+                    <div className="contact-card__sub" style={{ marginTop: 6 }}>Lunes a viernes, 8:00 a.m. – 5:00 p.m.</div>
                   </div>
                 </div>
               </div>
