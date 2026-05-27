@@ -747,7 +747,7 @@ function ConsultoriaPage() {
 
       <SectorsSection
         surface
-        title="Experiencia sectorial"
+        title="Experiencia en tu sector"
         sectors={[
         { icon: 'Flask',       title: 'Farmacéutico',  body: 'Control de acceso a laboratorios, almacenes de materia prima y áreas de manufactura. Protección de activos regulados y cadena de custodia certificada.' },
         { icon: 'Car',         title: 'Automotriz',    body: 'Seguridad en agencias, talleres y patios de vehículos. Control de acceso de personal, proveedores y clientes. Prevención de robo de partes y unidades.' },
