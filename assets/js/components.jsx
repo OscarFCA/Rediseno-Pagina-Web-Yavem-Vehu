@@ -669,8 +669,7 @@ function QualForm({ buttonText = 'Solicitar cotización', includeService = false
     const errs = {};
     if (!values.nombre.trim()) errs.nombre = 'Ingresa tu nombre completo.';
     if (!values.empresa.trim()) errs.empresa = 'Ingresa el nombre de tu empresa.';
-    if (!values.email.trim()) errs.email = 'Ingresa tu correo.';else
-    if (FREE_EMAIL_RE.test(values.email)) errs.email = 'Por favor usa tu correo de trabajo, no un correo personal.';
+    if (!values.email.trim()) errs.email = 'Ingresa tu correo.';
     if (includePhone && !values.telefono.trim()) errs.telefono = 'Ingresa un teléfono de contacto.';
     if (includeService && !values.servicio) errs.servicio = 'Selecciona un servicio.';
     const guardiasReq = !hideGuardias && (includeService ? values.servicio === 'guardias' : true);
