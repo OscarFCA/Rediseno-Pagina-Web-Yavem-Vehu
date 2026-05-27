@@ -731,9 +731,8 @@ function QualForm({ buttonText = 'Solicitar cotización', includeService = false
       }
       await window.emailjs.send(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_COTIZACION, payload);
       if (window.yvTrack) window.yvTrack('lead_email_sent', { nivel: level.nivel });
-      // Redirige a la thank you page dedicada (URL real para GA4 como conversion goal)
-      const base = window.location.pathname.replace(/\/[^/]*\.html$/, '/').replace(/[^/]*$/, '');
-      window.location.href = base + 'gracias-cotizacion/';
+      // Navega dentro del SPA → Header/Footer permanecen, conversion event se dispara en mount
+      navigate('/gracias-cotizacion');
     } catch (err) {
       console.error('EmailJS send failed:', err);
       if (window.yvTrack) window.yvTrack('lead_email_error', { message: String(err && err.message || err) });

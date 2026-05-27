@@ -933,9 +933,8 @@ function CareerForm() {
         throw new Error('EmailJS no disponible');
       }
       await window.emailjs.send(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_POSTULACION, payload);
-      // Redirige a la thank you page dedicada (URL real para GA4 como conversion goal)
-      const base = window.location.pathname.replace(/[^/]*$/, '');
-      window.location.href = base + 'gracias-postulacion/';
+      // Navega dentro del SPA → Header/Footer permanecen, conversion event se dispara en mount
+      navigate('/gracias-postulacion');
     } catch (err) {
       console.error('EmailJS send failed (postulación):', err);
       if (window.yvTrack) window.yvTrack('career_email_error', { message: String(err && err.message || err) });
@@ -1112,7 +1111,60 @@ function OportunidadesPage() {
     </div>);
 }
 
+// ============================================================
+// THANK YOU PAGES (post-formulario)
+// ============================================================
+function ThanksCard({ eyebrow, title, body, conversionEvent }) {
+  React.useEffect(() => {
+    if (conversionEvent && window.yvTrack) window.yvTrack(conversionEvent, { event_category: 'conversion' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
+  return (
+    <section className="section section--surface" data-screen-label="Confirmación">
+      <div className="container" style={{ maxWidth: 760 }}>
+        <article className="card" style={{ textAlign: 'center', padding: 'var(--space-6) var(--space-5)' }}>
+          <div aria-hidden="true" style={{ width: 72, height: 72, background: 'var(--color-primary)', borderRadius: '50%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto var(--space-4)' }}>
+            <Icon.Check size={36} />
+          </div>
+          {eyebrow && <span className="eyebrow" style={{ marginBottom: 'var(--space-2)' }}>{eyebrow}</span>}
+          <span className="section-marker" style={{ margin: '0 auto var(--space-3)' }}></span>
+          <h1 className="h1" style={{ margin: '0 0 var(--space-2)', color: 'var(--color-primary)' }}>{title}</h1>
+          <p className="body-lg" style={{ color: 'var(--color-text-secondary)', margin: '0 auto var(--space-5)', maxWidth: 560 }}>{body}</p>
+          <div className="hero__ctas" style={{ justifyContent: 'center' }}>
+            <a className="btn btn-primary" href={WA_LINK} target="_blank" rel="noopener noreferrer">
+              <Icon.WhatsApp size={18} /> Escríbenos por WhatsApp
+            </a>
+            <a className="btn btn-secondary" onClick={(e) => { e.preventDefault(); navigate('/'); }} href="/">Volver al inicio</a>
+          </div>
+        </article>
+      </div>
+    </section>);
+}
+
+function GraciasCotizacionPage() {
+  return (
+    <div className="page-fade" data-screen-label="Gracias cotización">
+      <ThanksCard
+        eyebrow="Confirmación de cotización"
+        title="Recibimos tu solicitud"
+        body={<>Gracias por contactar a <strong style={{ color: 'var(--color-primary)' }}>Yabem-Vehu</strong>. Nuestro equipo de ventas revisará tu información y te contactará en <strong>menos de 24 horas hábiles</strong> con una propuesta personalizada.</>}
+        conversionEvent="conversion_cotizacion" />
+    </div>);
+}
+
+function GraciasPostulacionPage() {
+  return (
+    <div className="page-fade" data-screen-label="Gracias postulación">
+      <ThanksCard
+        eyebrow="Confirmación de postulación"
+        title="¡Recibimos tu postulación!"
+        body={<>Gracias por tu interés en formar parte de <strong style={{ color: 'var(--color-primary)' }}>Yabem-Vehu</strong>. Nuestro equipo de Gestión Humana revisará tu perfil y, si coincide con una vacante abierta, te contactará en los próximos días hábiles.</>}
+        conversionEvent="conversion_postulacion" />
+    </div>);
+}
+
 // Export to window
 Object.assign(window, {
-  HomePage, NosotrosPage, GuardiasPage, AnalisisPage, ConsultoriaPage, ContactoPage, OportunidadesPage
+  HomePage, NosotrosPage, GuardiasPage, AnalisisPage, ConsultoriaPage, ContactoPage, OportunidadesPage,
+  GraciasCotizacionPage, GraciasPostulacionPage
 });

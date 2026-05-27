@@ -1,4 +1,4 @@
-/* global React, ReactDOM, Header, Footer, WhatsAppFloat, HomePage, NosotrosPage, GuardiasPage, AnalisisPage, ConsultoriaPage, ContactoPage, OportunidadesPage */
+/* global React, ReactDOM, Header, Footer, WhatsAppFloat, HomePage, NosotrosPage, GuardiasPage, AnalisisPage, ConsultoriaPage, ContactoPage, OportunidadesPage, GraciasCotizacionPage, GraciasPostulacionPage */
 const { useState, useEffect } = React;
 
 const ROUTES = {
@@ -9,6 +9,8 @@ const ROUTES = {
   '/consultoria': ConsultoriaPage,
   '/contacto': ContactoPage,
   '/oportunidades': OportunidadesPage,
+  '/gracias-cotizacion':  GraciasCotizacionPage,
+  '/gracias-postulacion': GraciasPostulacionPage,
 };
 
 function pathFromHash() {
@@ -52,6 +54,10 @@ function App() {
                           d: 'Cotiza guardias, análisis de riesgos o consultoría para tu empresa. REPSE activo.' },
       '/oportunidades': { t: 'Oportunidades Laborales | Únete a Yabem-Vehu',
                           d: 'Postúlate para guardia, supervisor, analista o consultor de seguridad. Empresa 100% mexicana, REPSE activo.' },
+      '/gracias-cotizacion':  { t: 'Gracias por tu cotización | Yabem-Vehu',
+                                d: 'Recibimos tu solicitud de cotización. Te responderemos en menos de 24 horas hábiles.' },
+      '/gracias-postulacion': { t: '¡Gracias por postularte! | Yabem-Vehu',
+                                d: 'Recibimos tu postulación. El equipo de Gestión Humana revisará tu perfil.' },
     };
     const m = meta[path] || meta['/'];
     document.title = m.t;
