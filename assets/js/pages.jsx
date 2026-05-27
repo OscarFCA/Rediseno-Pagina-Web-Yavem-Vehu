@@ -655,7 +655,7 @@ function AnalisisPage() {
       
 
       <CertsCardsSection
-        title="Respaldados por una formación internacional."
+        title={<span style={{ textWrap: 'balance' }}>Respaldados por una formación{' '}internacional.</span>}
         large
         items={[
         { logo: 'assets/img/cert-asis.webp', title: 'ASIS Internacional', code: 'Member', body: 'Nuestros especialistas en análisis de riesgos están alineados a los estándares internacionales más exigentes.' },
