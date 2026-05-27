@@ -900,8 +900,8 @@ function CareerForm() {
     nombre: '', email: '', telefono: '', puesto: '', mensaje: '', honeypot: ''
   });
   const [errors, setErrors] = useState({});
-  const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState(false);
 
   const set = (k) => (e) => setValues((v) => ({ ...v, [k]: e.target.value }));
 
@@ -919,7 +919,7 @@ function CareerForm() {
     const puestoLabel = (PUESTOS.find((p) => p.value === values.puesto) || {}).label || values.puesto;
     if (window.yvTrack) window.yvTrack('career_form_submit', { puesto: values.puesto });
 
-    setSending(true);
+    setSending(true); setSendError(false);
     const payload = {
       from_name: values.nombre,
       telefono:  values.telefono,
@@ -929,44 +929,19 @@ function CareerForm() {
       mensaje:   values.mensaje
     };
     try {
-      if (window.emailjs && window.EMAILJS_SERVICE_ID && window.EMAILJS_TEMPLATE_POSTULACION) {
-        await window.emailjs.send(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_POSTULACION, payload);
-        setSent(true);
-      } else {
+      if (!window.emailjs || !window.EMAILJS_SERVICE_ID || !window.EMAILJS_TEMPLATE_POSTULACION) {
         throw new Error('EmailJS no disponible');
       }
+      await window.emailjs.send(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_POSTULACION, payload);
+      // Redirige a la thank you page dedicada (URL real para GA4 como conversion goal)
+      const base = window.location.pathname.replace(/[^/]*$/, '');
+      window.location.href = base + 'gracias-postulacion/';
     } catch (err) {
       console.error('EmailJS send failed (postulación):', err);
-      // Fallback: cliente de correo del usuario
-      const subject = `Postulación — ${puestoLabel} — ${values.nombre}`;
-      const body =
-        `Hola, equipo de Gestión Humana de Yabem-Vehu:\n\n` +
-        `Quisiera postularme a una vacante. Mis datos:\n\n` +
-        `• Nombre completo: ${values.nombre}\n` +
-        `• Teléfono: ${values.telefono}\n` +
-        `• Correo electrónico: ${values.email || '(no proporcionado)'}\n` +
-        `• Puesto de interés: ${puestoLabel}\n\n` +
-        `Sobre mí:\n${values.mensaje}\n\n` +
-        `Quedo atento a su respuesta.\nGracias.`;
-      window.location.href = `mailto:contacto@yabem-vehu.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      setSent(true);
-    } finally {
+      if (window.yvTrack) window.yvTrack('career_email_error', { message: String(err && err.message || err) });
+      setSendError(true);
       setSending(false);
     }
-  }
-
-  if (sent) {
-    return (
-      <div className="form-success">
-        <div className="form-success__icon"><Icon.Check size={28} /></div>
-        <h3 className="h3" style={{ color: 'var(--color-primary)', marginBottom: 8 }}>¡Recibimos tu postulación!</h3>
-        <p className="muted" style={{ marginBottom: 20 }}>
-          Nuestro equipo de Gestión Humana revisará tu información. Si tu perfil coincide con una vacante abierta te contactaremos en los próximos días hábiles.
-        </p>
-        <a className="btn btn-primary" href={waLink(WA_MESSAGES.careerForm)} target="_blank" rel="noopener noreferrer">
-          <Icon.WhatsApp size={18} /> Escríbenos por WhatsApp
-        </a>
-      </div>);
   }
 
   return (
@@ -1015,6 +990,11 @@ function CareerForm() {
       </div>
 
       <button type="submit" className="btn btn-primary btn-full" disabled={sending}>{sending ? 'Enviando…' : 'Enviar postulación'}</button>
+      {sendError &&
+        <div role="alert" style={{ marginTop: 12, padding: '12px 16px', background: '#FFF1F0', border: '1px solid #FECACA', borderLeft: '4px solid #992824', borderRadius: 8, color: '#7A1F1C', fontSize: 14, lineHeight: 1.5 }}>
+          No pudimos enviar tu postulación en este momento. Intenta de nuevo o escríbenos por <a href={waLink(WA_MESSAGES.careerForm)} target="_blank" rel="noopener noreferrer" style={{ color: '#7A1F1C', textDecoration: 'underline', fontWeight: 700 }}>WhatsApp</a>.
+        </div>
+      }
 
       <div className="form-help">
         <Icon.Lock size={14} /> Tu información se utiliza únicamente para procesos de reclutamiento interno.

@@ -687,7 +687,6 @@ function QualForm({ buttonText = 'Solicitar cotización', includeService = false
     servicio: '', guardias: '', zona: [], mensaje: '', honeypot: ''
   });
   const [errors, setErrors] = useState({});
-  const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [sendError, setSendError] = useState(false);
 
@@ -721,44 +720,26 @@ function QualForm({ buttonText = 'Solicitar cotización', includeService = false
     }
     if (onSubmit) {
       onSubmit({ ...enriched, _score: score, _nivel: level.nivel, _descalificado: descalificado });
-      setSent(true);
       return;
     }
 
     setSending(true); setSendError(false);
     const payload = buildLeadPayload(enriched, score, level, breakdown);
     try {
-      if (window.emailjs && window.EMAILJS_SERVICE_ID && window.EMAILJS_TEMPLATE_COTIZACION) {
-        await window.emailjs.send(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_COTIZACION, payload);
-        if (window.yvTrack) window.yvTrack('lead_email_sent', { nivel: level.nivel });
-        setSent(true);
-      } else {
+      if (!window.emailjs || !window.EMAILJS_SERVICE_ID || !window.EMAILJS_TEMPLATE_COTIZACION) {
         throw new Error('EmailJS no disponible');
       }
+      await window.emailjs.send(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_COTIZACION, payload);
+      if (window.yvTrack) window.yvTrack('lead_email_sent', { nivel: level.nivel });
+      // Redirige a la thank you page dedicada (URL real para GA4 como conversion goal)
+      const base = window.location.pathname.replace(/\/[^/]*\.html$/, '/').replace(/[^/]*$/, '');
+      window.location.href = base + 'gracias-cotizacion/';
     } catch (err) {
       console.error('EmailJS send failed:', err);
-      if (window.yvTrack) window.yvTrack('lead_email_fallback_mailto', {});
-      // Fallback: cliente de correo del usuario
-      window.location.href = buildLeadMailto(enriched, score, level, breakdown);
-      setSent(true);
-    } finally {
+      if (window.yvTrack) window.yvTrack('lead_email_error', { message: String(err && err.message || err) });
+      setSendError(true);
       setSending(false);
     }
-  }
-
-  if (sent) {
-    return (
-      <div className="form-success">
-        <div className="form-success__icon"><Icon.Check size={28} /></div>
-        <h3 className="h3" style={{ color: 'var(--color-primary)', marginBottom: 8 }}>¡Recibimos tu solicitud!</h3>
-        <p className="muted" style={{ marginBottom: 20 }}>
-          Alguien de nuestro equipo revisará tu información y te contactará en menos de 24 horas hábiles.
-        </p>
-        <a className="btn btn-primary" href={waLink(WA_MESSAGES.qualForm)} target="_blank" rel="noopener noreferrer">
-          <Icon.WhatsApp size={18} /> Escríbenos ahora por WhatsApp
-        </a>
-      </div>);
-
   }
 
   const showGuardias = !hideGuardias && (!includeService || values.servicio === 'guardias' || !values.servicio);
@@ -851,6 +832,11 @@ function QualForm({ buttonText = 'Solicitar cotización', includeService = false
       }
 
       <button type="submit" className="btn btn-primary btn-full" disabled={sending}>{sending ? 'Enviando…' : buttonText}</button>
+      {sendError &&
+        <div role="alert" style={{ marginTop: 12, padding: '12px 16px', background: '#FFF1F0', border: '1px solid #FECACA', borderLeft: '4px solid #992824', borderRadius: 8, color: '#7A1F1C', fontSize: 14, lineHeight: 1.5 }}>
+          No pudimos enviar tu solicitud en este momento. Intenta de nuevo en unos segundos o escríbenos por <a href={waLink(WA_MESSAGES.qualForm)} target="_blank" rel="noopener noreferrer" style={{ color: '#7A1F1C', textDecoration: 'underline', fontWeight: 700 }}>WhatsApp</a>.
+        </div>
+      }
 
       <div className="form-help">
         <Icon.Lock size={14} /> Tu información es confidencial. Respondemos en menos de 24 horas hábiles.
