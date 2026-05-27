@@ -700,7 +700,7 @@ function ConsultoriaPage() {
         primary="Hablar con un consultor"
         secondary="Contactar ahora"
         secondaryHref={waLink(WA_MESSAGES.consultoria)}
-        badges={['ASIS Member', 'IFPO Member', 'DGSP CDMX 0605-15 / Exp. 3788-14']} />
+        badges={['ASIS Member', 'IFPO Member', 'CONOCER-SEP']} />
       
 
       <PainSection
@@ -758,13 +758,12 @@ function ConsultoriaPage() {
 
       <CertsCardsSection
         surface={false}
-        title="Consultores con certificación internacional"
+        title="Consultores con formación internacional"
         body="Cuando contratas consultoría con Yabem-Vehu, trabajas con especialistas alineados a estándares globales."
         items={[
-        { logo: 'assets/img/cert-asis.webp', title: 'ASIS International', code: 'Member', body: 'Estándares internacionales de gestión de riesgos y seguridad corporativa.' },
-        { logo: 'assets/img/cert-ifpo.png', title: 'IFPO', code: 'Member', body: 'Formación especializada en protección y consultoría de seguridad.' },
-        { logo: 'assets/img/cert-repse.webp', title: 'REPSE', code: 'ARR23960/2024', body: 'Operamos dentro del marco legal. Sin contingencias laborales para tu empresa.' },
-        { logo: 'assets/img/cert-ssc.webp', title: 'DGSP CDMX 0605-15 / Exp. 3788-14', code: 'Permiso 0605-15', body: 'Autorización vigente de la Secretaría de Seguridad Ciudadana.' }]
+        { logo: 'assets/img/cert-asis.webp',    title: 'ASIS Internacional', code: 'Member',             body: 'Estándares internacionales de gestión de riesgos y seguridad corporativa.' },
+        { logo: 'assets/img/cert-ifpo.png',     title: 'IFPO',               code: 'Member',             body: 'Formación especializada en protección y consultoría de seguridad.' },
+        { logo: 'assets/img/cert-conocer.png',  title: 'CONOCER SEP',        code: 'Evaluador Independiente', body: 'Red CONOCER de Prestadores de Servicios. Acreditación de competencias laborales en seguridad privada.' }]
         } />
       
 
