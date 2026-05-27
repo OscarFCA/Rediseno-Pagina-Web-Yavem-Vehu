@@ -749,16 +749,20 @@ function ConsultoriaPage() {
         surface
         title="Experiencia sectorial"
         sectors={[
-        { title: 'Farmacéutico', body: 'Protección de activos regulados, acceso a áreas de manufactura y control de cadena de custodia.' },
-        { title: 'Textil', body: 'Estrategia integral contra merma, robo interno y vulnerabilidades en procesos de producción.' },
-        { title: 'Residencial y Corporativo', body: 'Diseño de protocolos de acceso, gestión de crisis y esquemas de seguridad para edificios con múltiples inquilinos.' },
-        { title: 'Industrial', body: 'Protección de activos críticos, control de proveedores y planificación de continuidad operativa ante incidentes.' }]
+        { icon: 'Flask',       title: 'Farmacéutico',  body: 'Control de acceso a laboratorios, almacenes de materia prima y áreas de manufactura. Protección de activos regulados y cadena de custodia certificada.' },
+        { icon: 'Car',         title: 'Automotriz',    body: 'Seguridad en agencias, talleres y patios de vehículos. Control de acceso de personal, proveedores y clientes. Prevención de robo de partes y unidades.' },
+        { icon: 'ShoppingBag', title: 'Retail',        body: 'Prevención de merma en tienda, control de acceso a bodegas y protección de cajas. Guardias entrenados para entornos de alto flujo de personas.' },
+        { icon: 'Scissors',    title: 'Textil',        body: 'Diagnóstico y reducción de merma en líneas de producción y almacenes. Identificación de vectores de robo interno y externo en plantas activas.' },
+        { icon: 'Wrench',      title: 'Industrial',    body: 'Vigilancia perimetral, control de carga y descarga, y protección de maquinaria de alto valor. Esquemas de seguridad para operaciones 24/7.' },
+        { icon: 'Home',        title: 'Residencial',   body: 'Control de acceso vehicular y peatonal, rondines programados y comunicación directa con administración. Servicio para fraccionamientos, condominios y torres corporativas.' },
+        { icon: 'Building',    title: 'Corporativo',   body: 'Protección de instalaciones de oficinas, control de visitantes y colaboradores, y protocolos de respuesta ante incidentes en edificios con múltiples inquilinos.' },
+        { icon: 'HardHat',     title: 'Construcción',  body: 'Custodia de materiales, maquinaria y equipo en obra. Control de acceso de trabajadores y proveedores. Vigilancia nocturna y en fines de semana cuando la obra está sin personal.' }]
         } />
       
 
       <CertsCardsSection
         surface={false}
-        title="Consultores con formación internacional"
+        title={<span style={{ textWrap: 'balance', hyphens: 'manual', wordBreak: 'normal', overflowWrap: 'normal' }}>Consultores con formación<br/>internacional</span>}
         body="Cuando contratas consultoría con Yabem-Vehu, trabajas con especialistas alineados a estándares globales."
         items={[
         { logo: 'assets/img/cert-asis.webp',    title: 'ASIS Internacional', code: 'Member',             body: 'Estándares internacionales de gestión de riesgos y seguridad corporativa.' },
