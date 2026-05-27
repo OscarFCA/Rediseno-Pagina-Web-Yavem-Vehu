@@ -78,7 +78,7 @@ function HomePage() {
             <article className="card">
               <div className="card__icon"><Icon.ShieldCheck /></div>
               <h3 className="card__title">Guardias de Seguridad Intramuros</h3>
-              <p className="card__body">Guardias certificados y supervisados, seleccionados con rigor para proteger tus instalaciones y activos.</p>
+              <p className="card__body">Guardias capacitados bajo estándares internacionales y supervisados, seleccionados con rigor para proteger tus instalaciones y activos.</p>
               <a className="btn-link card__cta" onClick={(e) => {e.preventDefault();navigate('/guardias');}} href="/guardias">Ver servicio <Icon.ArrowRight /></a>
             </article>
             <article className="card">
