@@ -359,6 +359,10 @@ ul { margin: 0; padding: 0; list-style: none; }
   object-position: center top;
   display: block;
 }
+/* En móvil: ocultar el video (2MB) y dejar solo el poster para mejorar LCP */
+@media (max-width: 768px) {
+  .hero__bg-video { display: none; }
+}
 .hero__bg img.hero__bg-poster {
   animation: heroKenBurns 22s ease-in-out infinite alternate;
 }
@@ -487,10 +491,10 @@ img, video, iframe, svg, picture { max-width: 100%; height: auto; }
 }
 .section__subtitle {
   font-size: var(--text-body-lg);
-  color: var(--color-text-secondary);
+  color: #4A5568; /* contrast 8.2:1 sobre blanco, 6.9:1 sobre #F4F6F8 — WCAG AA */
   margin-top: 12px;
 }
-.section--navy .section__subtitle { color: rgba(255,255,255,0.8); }
+.section--navy .section__subtitle { color: rgba(255,255,255,0.92); }
 
 /* ===== Cards ===== */
 .cards-grid {

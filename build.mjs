@@ -19,4 +19,14 @@ await build({
   legalComments: 'none',
 });
 
-console.log('Bundle built');
+console.log('JS bundle built');
+
+// Minificar CSS → styles.min.css
+await build({
+  entryPoints: ['assets/css/styles.css'],
+  bundle: false,
+  minify: true,
+  outfile: 'assets/css/styles.min.css',
+  legalComments: 'none',
+});
+console.log('CSS minified');

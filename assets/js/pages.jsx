@@ -19,7 +19,6 @@ function HomePage() {
             poster="assets/img/hero-image.webp"
             aria-hidden="true">
             
-            <source src="assets/video/hero-bg.webm" type="video/webm" />
             <source src="assets/video/hero-bg.mp4" type="video/mp4" />
           </video>
         </div>
@@ -79,19 +78,19 @@ function HomePage() {
               <div className="card__icon"><Icon.ShieldCheck /></div>
               <h3 className="card__title">Guardias de Seguridad Intramuros</h3>
               <p className="card__body">Guardias capacitados bajo estándares internacionales y supervisados, seleccionados con rigor para proteger tus instalaciones y activos.</p>
-              <a className="btn-link card__cta" onClick={(e) => {e.preventDefault();navigate('/guardias');}} href="/guardias">Ver servicio <Icon.ArrowRight /></a>
+              <a className="btn-link card__cta" onClick={(e) => {e.preventDefault();navigate('/guardias');}} href="/guardias" aria-label="Ver servicio de Guardias de Seguridad Intramuros">Ver servicio <Icon.ArrowRight /></a>
             </article>
             <article className="card">
               <div className="card__icon"><Icon.Search /></div>
               <h3 className="card__title">Análisis de Riesgos Empresariales</h3>
               <p className="card__body">Diagnosticamos vulnerabilidades en tus instalaciones y diseñamos estrategias preventivas para tu operación.</p>
-              <a className="btn-link card__cta" onClick={(e) => {e.preventDefault();navigate('/analisis');}} href="/analisis">Ver servicio <Icon.ArrowRight /></a>
+              <a className="btn-link card__cta" onClick={(e) => {e.preventDefault();navigate('/analisis');}} href="/analisis" aria-label="Ver servicio de Análisis de Riesgos Empresariales">Ver servicio <Icon.ArrowRight /></a>
             </article>
             <article className="card">
               <div className="card__icon"><Icon.Clipboard /></div>
               <h3 className="card__title">Consultoría en Seguridad Privada</h3>
               <p className="card__body">Asesoría estratégica para identificar amenazas, diseñar planes de acción y fortalecer tu postura de seguridad.</p>
-              <a className="btn-link card__cta" onClick={(e) => {e.preventDefault();navigate('/consultoria');}} href="/consultoria">Ver servicio <Icon.ArrowRight /></a>
+              <a className="btn-link card__cta" onClick={(e) => {e.preventDefault();navigate('/consultoria');}} href="/consultoria" aria-label="Ver servicio de Consultoría en Seguridad Privada">Ver servicio <Icon.ArrowRight /></a>
             </article>
           </div>
         </div>

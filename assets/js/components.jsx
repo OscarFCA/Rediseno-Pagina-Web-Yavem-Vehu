@@ -148,7 +148,7 @@ function Header({ current }) {
       <header className={"header " + (scrolled ? "is-scrolled" : "")} data-screen-label="Header">
         <div className="container header__inner">
           <a className="header__logo" onClick={(e) => {e.preventDefault();navigate('/');}} href="/" aria-label="Yabem-Vehu — Inicio">
-            <img src="assets/img/header-logo.png" alt="Yabem-Vehu — Seguridad Privada" />
+            <img src="assets/img/header-logo.png" alt="Yabem-Vehu — Seguridad Privada" width="214" height="56" />
           </a>
           <nav className="nav-desktop" aria-label="Navegación principal">
             {NAV_LINKS.map((l) =>
@@ -180,7 +180,7 @@ function Header({ current }) {
         </div>
       </header>
 
-      <div className={"mobile-menu " + (open ? "is-open" : "")} aria-hidden={!open}>
+      <div className={"mobile-menu " + (open ? "is-open" : "")} {...(open ? {} : { inert: '' })}>
         <a className="mobile-menu__link" onClick={(e) => {e.preventDefault();navigate('/');setOpen(false);}} href="/">Inicio</a>
         <a className="mobile-menu__link" onClick={(e) => {e.preventDefault();navigate('/nosotros');setOpen(false);}} href="/nosotros">Nosotros</a>
         <a className="mobile-menu__link" onClick={(e) => {e.preventDefault();setSvcOpen(!svcOpen);}} href="#" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -210,7 +210,7 @@ function Footer() {
       <div className="container">
         <div className="footer__grid">
           <div className="footer__brand">
-            <img src="assets/img/footer-logo.png" alt="Yabem-Vehu" />
+            <img src="assets/img/footer-logo.png" alt="Yabem-Vehu" width="350" height="92" loading="lazy" />
             <p className="footer__tagline">El Factor Humano de su Seguridad. 15 años protegiendo activos en CDMX y Estado de México.</p>
           </div>
           <div>
@@ -294,7 +294,7 @@ function ClientsMarquee({ title = 'Empresas que confían en nosotros' }) {
         <div className="marquee">
           <div className="marquee__track">
             {[...CLIENT_LOGOS, ...CLIENT_LOGOS].map((l, i) =>
-            <div className="marquee__item" key={i}><img src={l.src} alt={l.alt} loading="lazy" /></div>
+            <div className="marquee__item" key={i}><img src={l.src} alt={l.alt} loading="lazy" width="146" height="98" /></div>
             )}
           </div>
         </div>
@@ -463,10 +463,12 @@ function TestimonialCarousel({ items = TESTIMONIALS, perPage = 2, autoplayMs = 3
           <button
             type="button"
             key={i}
+            role="tab"
             className={`testimonial-carousel__dot ${i === idx ? 'is-active' : ''}`}
             onClick={() => setIdx(i)}
             aria-label={`Ir a la página ${i + 1}`}
-            aria-selected={i === idx} />
+            aria-selected={i === idx}
+            tabIndex={i === idx ? 0 : -1} />
 
           )}
         </div>
