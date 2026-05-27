@@ -558,7 +558,103 @@ function ZonaMultiSelect({ value, onChange, error, id = 'zona' }) {
 
 }
 
-function QualForm({ buttonText = 'Solicitar cotización', includeService = false, includePhone = false, includeMessage = false, hideGuardias = false, onSubmit }) {
+// ============================================================
+// LEAD SCORING (interno — nunca se muestra al prospecto)
+// Doc: SCORING_Leads_Yabem.md v1.0
+// ============================================================
+const SERVICE_LABELS = {
+  guardias:    'Guardias de Seguridad',
+  analisis:    'Análisis de Riesgos',
+  consultoria: 'Consultoría en Seguridad',
+  indeciso:    'No sé todavía / No especificó'
+};
+const SCORE_SERVICIO = { guardias: 25, analisis: 18, consultoria: 13, indeciso: 5 };
+const SCORE_GUARDIAS = { '26+': 25, '11-25': 18, '4-10': 10, '1-3': 4 };
+const SCORE_ZONA_NAME = {
+  'Ciudad de México': 30, 'Estado de México': 28,
+  'Puebla': 20, 'Tlaxcala': 18,
+  'Hidalgo': 12, 'Morelos': 12, 'Querétaro': 12,
+  'Guanajuato': 10, 'Jalisco': 10, 'Nuevo León': 10,
+  'Veracruz': 8
+};
+const EMPRESA_VACIA = ['', 'na', 'n/a', 'no aplica', 'no tengo', '-', '.'];
+const COMPETITOR_KEYWORDS = ['seguridad', 'guardias', 'vigilancia', 'protección', 'proteccion'];
+
+function calcLeadScore(v) {
+  let score = 0;
+  const breakdown = {};
+
+  const svcKey = SERVICE_LABELS[v.servicio] ? v.servicio : 'indeciso';
+  breakdown.servicio = SCORE_SERVICIO[svcKey];
+  score += breakdown.servicio;
+
+  if (svcKey === 'guardias') {
+    breakdown.guardias = SCORE_GUARDIAS[v.guardias] || 0;
+  } else {
+    breakdown.guardias = 10;
+  }
+  score += breakdown.guardias;
+
+  const zonas = v.zona || [];
+  const ptsArr = zonas.map((z) => SCORE_ZONA_NAME[z] !== undefined ? SCORE_ZONA_NAME[z] : 6);
+  let ptsZ = ptsArr.length ? Math.max.apply(null, ptsArr) : 0;
+  if (zonas.length >= 5) ptsZ += 8;
+  else if (zonas.length >= 3) ptsZ += 5;
+  breakdown.zona = Math.min(30, ptsZ);
+  score += breakdown.zona;
+
+  const esLibre = FREE_EMAIL_RE.test(v.email || '');
+  breakdown.correo = esLibre ? -15 : 10;
+  score += breakdown.correo;
+
+  const empresaLow = (v.empresa || '').trim().toLowerCase();
+  const sinEmpresa = EMPRESA_VACIA.includes(empresaLow);
+  breakdown.empresa = sinEmpresa ? -5 : 10;
+  score += breakdown.empresa;
+
+  const descalificado = !sinEmpresa && COMPETITOR_KEYWORDS.some((k) => empresaLow.includes(k));
+  const finalScore = descalificado ? 0 : Math.max(0, score);
+
+  return { score: finalScore, raw: score, descalificado, breakdown };
+}
+
+function classifyLead(score, descalificado) {
+  if (descalificado) return { nivel: '⊘', emoji: '⊘', texto: 'POSIBLE COMPETIDOR — DESCALIFICADO', tiempo: 'No prioritario' };
+  if (score >= 70)   return { nivel: 'A', emoji: '🔴', texto: 'CLIENTE CALIENTE', tiempo: 'Responder en menos de 2 horas' };
+  if (score >= 40)   return { nivel: 'B', emoji: '🟡', texto: 'CLIENTE TIBIO',     tiempo: 'Responder en menos de 24 horas' };
+  return                  { nivel: 'C', emoji: '⚫', texto: 'LEAD FRÍO',          tiempo: 'Responder en 48 a 72 horas' };
+}
+
+function buildLeadMailto(values, score, level, breakdown) {
+  const subj = `${level.emoji} ${level.texto} (${score}/100) — ${values.empresa || values.nombre}`;
+  const servicio = SERVICE_LABELS[values.servicio] || 'No especificado';
+  const lines = [
+    `${level.emoji} NIVEL ${level.nivel} — ${level.texto}`,
+    `Acción: ${level.tiempo}`,
+    `Score: ${score}/100`,
+    '',
+    '— Datos del prospecto —',
+    `Nombre: ${values.nombre}`,
+    `Empresa: ${values.empresa || '(vacío)'}`,
+    `Correo: ${values.email}`,
+    values.telefono ? `Teléfono: ${values.telefono}` : '',
+    `Servicio: ${servicio}`,
+    values.guardias ? `Guardias: ${values.guardias}` : '',
+    `Zona(s): ${(values.zona || []).join(', ') || '(no especificada)'}`,
+    '',
+    '— Mensaje del prospecto —',
+    values.mensaje || '(sin mensaje)',
+    '',
+    '— Detalle del scoring (interno) —',
+    `Servicio: ${breakdown.servicio} · Guardias: ${breakdown.guardias} · Zona: ${breakdown.zona} · Correo: ${breakdown.correo} · Empresa: ${breakdown.empresa}`,
+    '',
+    '—',
+    'Lead generado automáticamente desde yabem-vehu.com.mx'
+  ].filter(Boolean);
+  return `mailto:contacto@yabem-vehu.com?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(lines.join('\n'))}`;
+}
+
+function QualForm({ buttonText = 'Solicitar cotización', includeService = false, includePhone = false, includeMessage = false, hideGuardias = false, defaultService = '', onSubmit }) {
   const [values, setValues] = useState({
     nombre: '', empresa: '', email: '', telefono: '',
     servicio: '', guardias: '', zona: [], mensaje: '', honeypot: ''
@@ -583,8 +679,24 @@ function QualForm({ buttonText = 'Solicitar cotización', includeService = false
     if (values.honeypot) return; // bot
     setErrors(errs);
     if (Object.keys(errs).length === 0) {
+      const effectiveServicio = values.servicio || defaultService || 'indeciso';
+      const enriched = { ...values, servicio: effectiveServicio };
+      const { score, descalificado, breakdown } = calcLeadScore(enriched);
+      const level = classifyLead(score, descalificado);
+      if (window.yvTrack) {
+        window.yvTrack('lead_form_submit', {
+          score: score, nivel: level.nivel,
+          servicio: effectiveServicio, guardias: enriched.guardias || '',
+          zonas: (enriched.zona || []).join('|')
+        });
+      }
+      if (onSubmit) {
+        onSubmit({ ...enriched, _score: score, _nivel: level.nivel, _descalificado: descalificado });
+      } else {
+        // Default: abre cliente de correo con asunto/cuerpo prerellenados a contacto@yabem-vehu.com
+        window.location.href = buildLeadMailto(enriched, score, level, breakdown);
+      }
       setSent(true);
-      if (onSubmit) onSubmit(values);
     }
   }
 
