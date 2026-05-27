@@ -128,7 +128,7 @@ function NosotrosPage() {
       <PageHero
         eyebrow="Seguridad Privada"
         title={<>Conoce más<br />sobre nosotros</>}
-        subtitle="15 años de experiencia en los sectores Farmacéutico, Textil, Residencial y Corporativo."
+        subtitle="Más de 15 años protegiendo activos empresariales en México."
         variant="nosotros"
         primary="Cotiza con nosotros"
         primaryHref="/contacto"
@@ -153,7 +153,7 @@ function NosotrosPage() {
               </div>
               <div className="metrics">
                 <div className="metric"><div className="metric__value">15</div><div className="metric__label">Años de experiencia</div></div>
-                <div className="metric"><div className="metric__value">4</div><div className="metric__label">Sectores atendidos</div></div>
+                <div className="metric"><div className="metric__value">+100</div><div className="metric__label">Clientes resguardados</div></div>
                 <div className="metric"><div className="metric__value">+30</div><div className="metric__label">Años equipo consultor</div></div>
               </div>
             </div>
@@ -178,7 +178,7 @@ function NosotrosPage() {
             <article className="card card--accent">
               <div className="card__icon"><Icon.Award /></div>
               <h3 className="card__title">Reclutamiento riguroso de personal</h3>
-              <p className="card__body">Nuestra área de Gestión Humana realiza procesos rigurosos de reclutamiento y selección de personal, diseñando e implementando cursos de capacitación apegados a la Ley Federal de Seguridad Privada y bajo estándares de competencias laborales.</p>
+              <p className="card__body">Nuestra área de Gestión Humana realiza procesos rigurosos de reclutamiento y selección de personal, incorporando Inteligencia Artificial en las evaluaciones para seleccionar el mejor talento. Diseñamos e implementamos cursos de capacitación apegados a la Ley Federal de Seguridad Privada y bajo estándares de competencias laborales.</p>
             </article>
           </div>
         </div>
@@ -254,8 +254,8 @@ function NosotrosPage() {
         <div className="container">
           <div className="section__header">
             <span className="section-marker"></span>
-            <h2 className="section__title" style={{ fontSize: "clamp(26px, 6vw, 40px)" }}>Por qué elegirnos</h2>
-            <p className="section__subtitle">
+            <h2 className="section__title" style={{ fontSize: "clamp(26px, 6vw, 40px)" }}>¿Por qué elegirnos?</h2>
+            <p className="section__subtitle" style={{ fontWeight: 700, color: '#fff' }}>
               Elegir a Yabem-Vehu es optar por un socio de seguridad con visión de futuro y compromiso total. Nos distinguimos por nuestro estricto cumplimiento normativo, operando siempre con todos los permisos y registros en regla.
             </p>
           </div>
@@ -290,10 +290,8 @@ function NosotrosPage() {
 
           <h3 className="h4" style={{ color: '#fff', marginBottom: 16, opacity: 0.85, fontSize: 13, letterSpacing: '0.12em', textTransform: 'uppercase' }}>Asociaciones</h3>
           <div className="cert-row">
-            <span className="badge-cert"><span className="dot"></span>ASIS International — Member</span>
-            <span className="badge-cert"><span className="dot"></span>IFPO — Member</span>
-            <span className="badge-cert"><span className="dot"></span>ANERPV — Centinela 2.0</span>
-            <span className="badge-cert"><span className="dot"></span>ALAS — Latinoamérica</span>
+            <span className="badge-cert"><span className="dot"></span>ASIS Internacional — Member</span>
+            <span className="badge-cert"><span className="dot"></span>IFPO (International Foundation for Protection Officers) — Member</span>
           </div>
 
           <div className="tech-box">
