@@ -2,7 +2,7 @@
 **URL:** `cotiza.yabem-vehu.com.mx/nosotros`  
 **Persona objetivo:** Los 3 perfiles — validación de credibilidad antes del cierre  
 **Keyword principal:** empresa de seguridad privada CDMX 15 años  
-**Keywords secundarias:** empresa seguridad certificada REPSE SSC, quiénes somos seguridad privada  
+**Keywords secundarias:** empresa seguridad certificada REPSE DGSP CDMX 0605-15 / Exp. 3788-14, quiénes somos seguridad privada  
 **Prioridad:** Media-Alta  
 **Estado:** Pendiente de construcción
 
@@ -11,7 +11,7 @@
 ## Meta SEO
 
 ```
-<title>Nosotros | Yabem Vehu — Seguridad Privada con 15 Años de Experiencia</title>
+<title>Nosotros | Yabem-Vehu — Seguridad Privada con 15 Años de Experiencia</title>
 <meta name="description" content="Somos una empresa mexicana de seguridad privada con 15 años de experiencia. REPSE activo, miembros de ASIS e IFPO. Conoce nuestra misión, visión y equipo.">
 <link rel="canonical" href="https://cotiza.yabem-vehu.com.mx/nosotros">
 ```
@@ -136,14 +136,14 @@ Igual que Home — sección 3. Mismas imágenes, mismo título.
 > Por qué elegirnos
 
 **Cuerpo (fuente: presentación comercial):**
-> Elegir a Yabem Vehu es optar por un socio de seguridad con visión de futuro y un compromiso total. Nos distinguimos por nuestro estricto cumplimiento normativo, operando siempre con todos los permisos y registros en regla.
+> Elegir a Yabem-Vehu es optar por un socio de seguridad con visión de futuro y un compromiso total. Nos distinguimos por nuestro estricto cumplimiento normativo, operando siempre con todos los permisos y registros en regla.
 
 **Subsección: Registros oficiales**
 
 | Registro | Número | Qué significa para tu empresa |
 |---|---|---|
 | REPSE | ARR23960/2024 | Proveedor registrado ante la STPS. Contratar con nosotros no genera contingencias laborales. |
-| SSC | Permiso 0605-15 / Exp. 3788-14 | Operamos con autorización vigente de la Secretaría de Seguridad Ciudadana. |
+| DGSP CDMX 0605-15 / Exp. 3788-14 | Permiso 0605-15 / Exp. 3788-14 | Operamos con autorización vigente de la Secretaría de Seguridad Ciudadana. |
 
 **Subsección: Asociaciones**
 - ASIS International — Member
@@ -157,7 +157,7 @@ Igual que Home — sección 3. Mismas imágenes, mismo título.
 **Cambios vs. sitio actual:**
 - Esta sección no existe en el sitio actual como sección independiente
 - Es contenido nuevo derivado de la presentación comercial
-- Los logos de REPSE, SSC y ASIS ya están disponibles como imágenes
+- Los logos de REPSE, DGSP CDMX 0605-15 / Exp. 3788-14 y ASIS ya están disponibles como imágenes
 
 **Imágenes existentes a usar:**
 - `yv-repse.webp`
@@ -218,6 +218,6 @@ Igual que Home. Ver `CONTENIDO_Home.md` — Footer.
 ## Notas para el desarrollador
 
 - Los bloques de misión/visión/valores conservan el layout de 3 columnas del sitio actual
-- La tabla de registros (REPSE/SSC) usa el componente `.badge-cert` del DESIGN.md
+- La tabla de registros (REPSE/DGSP CDMX 0605-15 / Exp. 3788-14) usa el componente `.badge-cert` del DESIGN.md
 - El bloque de datos clave (15 años / 4 sectores / 30 años equipo) usa metric cards
 - Pendiente confirmación de Brandon sobre los valores antes de publicar

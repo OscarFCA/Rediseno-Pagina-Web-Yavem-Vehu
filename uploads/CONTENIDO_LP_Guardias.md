@@ -11,7 +11,7 @@
 ## Meta SEO
 
 ```
-<title>Guardias de Seguridad Intramuros para Empresas en CDMX | Yabem Vehu</title>
+<title>Guardias de Seguridad Intramuros para Empresas en CDMX | Yabem-Vehu</title>
 <meta name="description" content="Guardias de seguridad intramuros certificados para empresas en CDMX y Estado de México. Selección rigurosa, capacitación continua, supervisión constante. REPSE activo. Cotiza hoy.">
 <link rel="canonical" href="https://cotiza.yabem-vehu.com.mx/guardias">
 ```
@@ -71,7 +71,7 @@ Igual que Home. Ver `CONTENIDO_Home.md` — Sección 1.
 
 - **Capacitación bajo estándares federales** — Formación continua apegada a la Ley Federal de Seguridad Privada y estándares de competencia CONOCER-SEP.
 
-- **REPSE activo ARR23960/2024** — Contratar con Yabem Vehu no genera contingencias laborales para tu empresa. Operamos 100% dentro del marco legal.
+- **REPSE activo ARR23960/2024** — Contratar con Yabem-Vehu no genera contingencias laborales para tu empresa. Operamos 100% dentro del marco legal.
 
 ---
 
@@ -127,7 +127,7 @@ Igual que Home. Ver `CONTENIDO_Home.md` — Sección 1.
 **Certificaciones con texto explicativo:**
 
 - **REPSE — ARR23960/2024** · Registro de Prestadoras de Servicios Especializados ante la STPS. Contratar con nosotros no te genera riesgos laborales.
-- **SSC — Permiso 0605-15** · Autorización vigente de la Secretaría de Seguridad Ciudadana de la CDMX.
+- **DGSP CDMX 0605-15 / Exp. 3788-14 — Permiso 0605-15** · Autorización vigente de la Secretaría de Seguridad Ciudadana de la CDMX.
 - **ASIS International** · Miembro activo. Nuestros directivos reciben formación de vanguardia en seguridad.
 
 **Imágenes existentes a usar:**

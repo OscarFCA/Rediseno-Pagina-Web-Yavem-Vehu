@@ -11,7 +11,7 @@
 ## Meta SEO
 
 ```
-<title>Análisis de Riesgos Empresariales en CDMX | Yabem Vehu</title>
+<title>Análisis de Riesgos Empresariales en CDMX | Yabem-Vehu</title>
 <meta name="description" content="Diagnóstico especializado de riesgos en tus instalaciones. Identificamos vulnerabilidades físicas, evaluamos amenazas internas y externas, y diseñamos un plan de acción para tu empresa. CDMX y Estado de México.">
 <link rel="canonical" href="https://cotiza.yabem-vehu.com.mx/analisis">
 ```

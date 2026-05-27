@@ -2,7 +2,7 @@
 **URL:** `cotiza.yabem-vehu.com.mx/consultoria`  
 **Persona objetivo:** Mónica Paredes perfil senior — evalúa proveedor estratégico de largo plazo  
 **Keyword principal:** consultoría en seguridad privada México  
-**Keywords secundarias:** consultoría seguridad corporativa CDMX, plan de seguridad para empresa, empresa seguridad certificada SSC REPSE  
+**Keywords secundarias:** consultoría seguridad corporativa CDMX, plan de seguridad para empresa, empresa seguridad certificada DGSP CDMX 0605-15 / Exp. 3788-14 REPSE  
 **Prioridad:** Media  
 **Estado:** Pendiente de construcción
 
@@ -11,7 +11,7 @@
 ## Meta SEO
 
 ```
-<title>Consultoría en Seguridad Privada para Empresas | Yabem Vehu</title>
+<title>Consultoría en Seguridad Privada para Empresas | Yabem-Vehu</title>
 <meta name="description" content="Asesoría estratégica en seguridad para empresas en CDMX. Detectamos amenazas, diseñamos planes de acción y fortalecemos tu postura de seguridad. REPSE activo. Miembros ASIS e IFPO.">
 <link rel="canonical" href="https://cotiza.yabem-vehu.com.mx/consultoria">
 ```
@@ -127,7 +127,7 @@ Igual que Home. Ver `CONTENIDO_Home.md` — Sección 1.
 - **ASIS International — Member** · Estándares internacionales de gestión de riesgos y seguridad corporativa.
 - **IFPO — Member** · Formación especializada en protección y consultoría de seguridad.
 - **REPSE — ARR23960/2024** · Operamos dentro del marco legal. Sin contingencias laborales para tu empresa.
-- **SSC — Permiso 0605-15** · Autorización vigente de la Secretaría de Seguridad Ciudadana.
+- **DGSP CDMX 0605-15 / Exp. 3788-14 — Permiso 0605-15** · Autorización vigente de la Secretaría de Seguridad Ciudadana.
 
 **Imágenes existentes a usar:**
 - `yv-asis.webp`

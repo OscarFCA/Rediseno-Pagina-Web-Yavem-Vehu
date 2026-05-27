@@ -1,9 +1,9 @@
 # DESIGN.md — Sistema de Diseño Web
-## Yabem Vehu Seguridad Privada
+## Yabem-Vehu Seguridad Privada
 **Versión:** 1.0  
 **Fecha:** Mayo 2026  
 **Autor:** Elías Oscar Rico Contreras  
-**Fuente de verdad visual:** Brandbook Yabem Vehu V1.0  
+**Fuente de verdad visual:** Brandbook Yabem-Vehu V1.0  
 **Proyecto:** Funnel de Leads — Nueva Arquitectura Web
 
 ---
@@ -94,7 +94,7 @@ font-family: 'Inter', sans-serif;
 
 ## 3. Logotipo
 
-Reglas directas del Brandbook Yabem Vehu V1.0.
+Reglas directas del Brandbook Yabem-Vehu V1.0.
 
 ### Versiones permitidas
 
@@ -361,7 +361,7 @@ Uso: inmediatamente antes de cada `<h2>` de sección. No usar en H3 ni elementos
 
 **Certificaciones que aplican:**
 - REPSE — ARR23960/2024
-- SSC — Permiso 0605-15
+- DGSP CDMX 0605-15 / Exp. 3788-14 — Permiso 0605-15
 - ASIS International Member
 - IFPO Member
 - ANERPV — Centinela 2.0

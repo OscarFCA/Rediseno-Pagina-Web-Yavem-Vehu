@@ -11,13 +11,13 @@
 ## Meta SEO
 
 ```
-<title>Empresa de Seguridad Privada en CDMX | Yabem Vehu</title>
+<title>Empresa de Seguridad Privada en CDMX | Yabem-Vehu</title>
 <meta name="description" content="Empresa de seguridad privada en CDMX y Estado de México con 15 años de experiencia. Guardias intramuros, análisis de riesgos y consultoría. REPSE activo. Cotiza hoy.">
 <link rel="canonical" href="https://cotiza.yabem-vehu.com.mx/">
 ```
 
 **Cambios vs. sitio actual:**
-- `title`: de "Seguridad privada | Yabem Vehu" → incluye CDMX y keyword de búsqueda
+- `title`: de "Seguridad privada | Yabem-Vehu" → incluye CDMX y keyword de búsqueda
 - `description`: de 10 años → 15 años. Agrega REPSE y CTA "Cotiza hoy"
 
 ---
@@ -26,7 +26,7 @@
 
 **Estructura:**
 ```
-[Logo Yabem Vehu]   Inicio | Nosotros | Servicios ▾ | Contáctanos   [Botón: Cotiza ahora]
+[Logo Yabem-Vehu]   Inicio | Nosotros | Servicios ▾ | Contáctanos   [Botón: Cotiza ahora]
                                           ├── Guardias de Seguridad
                                           ├── Análisis de Riesgos
                                           └── Consultoría en Seguridad
@@ -54,7 +54,7 @@
 **Cambios vs. sitio actual:**
 - H1: agrega "para empresas en CDMX" → keyword de alta intención
 - Subtítulo: de "más de 10 años" → "15 años"
-- Certificaciones (REPSE, ASIS, SSC): se mantienen, se agrega 1 línea de texto explicativo debajo de cada logo
+- Certificaciones (REPSE, ASIS, DGSP CDMX 0605-15 / Exp. 3788-14): se mantienen, se agrega 1 línea de texto explicativo debajo de cada logo
 
 **CTAs:**
 - Principal: `Cotiza ahora` → `/contacto` — botón rojo `#992824`
@@ -64,12 +64,12 @@
 - `hero-image.webp` — imagen principal del hero (guardia en instalación)
 - `yv-repse.webp` — logo REPSE
 - `yv-asis.webp` — logo ASIS
-- `yv-ssc.webp` — logo SSC
+- `yv-ssc.webp` — logo DGSP CDMX 0605-15 / Exp. 3788-14
 
 **Texto explicativo de certificaciones (nuevo — no existe en sitio actual):**
 - REPSE: "Registro oficial ante la STPS. Operamos 100% dentro del marco legal."
 - ASIS: "Miembro activo de la asociación internacional de seguridad."
-- SSC: "Permiso de operación vigente ante la Secretaría de Seguridad Ciudadana."
+- DGSP CDMX 0605-15 / Exp. 3788-14: "Permiso de operación vigente ante la Secretaría de Seguridad Ciudadana."
 
 ---
 
@@ -206,7 +206,7 @@
 - Se agrega el tagline oficial de la presentación comercial
 - "Oportunidades laborales" se mueve aquí desde el nav principal
 - Se reemplaza "Desarrollado por Digital Ascent" → sin mención de agencia
-- Copyright: `© 2026 Empresarial Yabem Vehu S.A. de C.V. Todos los derechos reservados.`
+- Copyright: `© 2026 Empresarial Yabem-Vehu S.A. de C.V. Todos los derechos reservados.`
 
 **Imagen:** Logo existente versión blanca (negativa) para fondo navy
 

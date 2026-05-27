@@ -1,6 +1,6 @@
 # Rediseño Página Web Yavem Vehu
 
-Rediseño del sitio web institucional de **Yabem Vehu**, empresa de seguridad privada con 15 años de experiencia en CDMX y Estado de México.
+Rediseño del sitio web institucional de **Yabem-Vehu**, empresa de seguridad privada con 15 años de experiencia en CDMX y Estado de México.
 
 ## Stack
 

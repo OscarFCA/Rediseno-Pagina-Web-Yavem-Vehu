@@ -86,17 +86,17 @@ const NAV_LINKS = [
 
 const WA_PHONE = '5215578792146';
 function waLink(message) {
-  const msg = message || 'Buen día, quisiera más información sobre Yabem Vehu.';
+  const msg = message || 'Buen día, quisiera más información sobre Yabem-Vehu.';
   return `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(msg)}`;
 }
 const WA_MESSAGES = {
-  generic: 'Buen día, vi su sitio web y quisiera más información sobre Yabem Vehu.',
+  generic: 'Buen día, vi su sitio web y quisiera más información sobre Yabem-Vehu.',
   cotizar: 'Buen día, quisiera cotizar un servicio de seguridad para mi empresa.',
   guardias: 'Buen día, me interesa cotizar el servicio de guardias de seguridad intramuros para mi empresa.',
   analisis: 'Buen día, me interesa solicitar un análisis de riesgos para mi empresa.',
   consultoria: 'Buen día, me interesa el servicio de consultoría en seguridad privada para mi empresa.',
-  nosotros: 'Buen día, vi su sitio web y quisiera conocer más sobre los servicios de Yabem Vehu.',
-  contacto: 'Buen día, quisiera contactar a Yabem Vehu para una cotización.',
+  nosotros: 'Buen día, vi su sitio web y quisiera conocer más sobre los servicios de Yabem-Vehu.',
+  contacto: 'Buen día, quisiera contactar a Yabem-Vehu para una cotización.',
   oportunidades: 'Buen día, vi sus oportunidades laborales en el sitio y me gustaría postular para una vacante.',
   qualForm: 'Buen día, acabo de enviar la solicitud en su sitio y me gustaría dar seguimiento a mi cotización.',
   careerForm: 'Buen día, acabo de enviar mi postulación en su sitio y me gustaría dar seguimiento.'
@@ -126,8 +126,8 @@ function Header({ current }) {
     <>
       <header className={"header " + (scrolled ? "is-scrolled" : "")} data-screen-label="Header">
         <div className="container header__inner">
-          <a className="header__logo" onClick={(e) => {e.preventDefault();navigate('/');}} href="/" aria-label="Yabem Vehu — Inicio">
-            <img src="assets/img/header-logo.png" alt="Yabem Vehu — Seguridad Privada" />
+          <a className="header__logo" onClick={(e) => {e.preventDefault();navigate('/');}} href="/" aria-label="Yabem-Vehu — Inicio">
+            <img src="assets/img/header-logo.png" alt="Yabem-Vehu — Seguridad Privada" />
           </a>
           <nav className="nav-desktop" aria-label="Navegación principal">
             {NAV_LINKS.map((l) =>
@@ -189,7 +189,7 @@ function Footer() {
       <div className="container">
         <div className="footer__grid">
           <div className="footer__brand">
-            <img src="assets/img/footer-logo.png" alt="Yabem Vehu" />
+            <img src="assets/img/footer-logo.png" alt="Yabem-Vehu" />
             <p className="footer__tagline">El Factor Humano de su Seguridad. 15 años protegiendo activos en CDMX y Estado de México.</p>
           </div>
           <div>
@@ -222,8 +222,8 @@ function Footer() {
           </div>
         </div>
         <div className="footer__bottom">
-          <div>© 2026 Empresarial Yabem Vehu S.A. de C.V. Todos los derechos reservados.</div>
-          <div>REPSE ARR23960/2024 · SSC 0605-15</div>
+          <div>© 2026 Empresarial Yabem-Vehu S.A. de C.V. Todos los derechos reservados.</div>
+          <div>REPSE ARR23960/2024 · DGSP CDMX 0605-15 / Exp. 3788-14</div>
         </div>
       </div>
     </footer>);
@@ -684,7 +684,7 @@ function QualForm({ buttonText = 'Solicitar cotización', includeService = false
 // PAGE HERO ART (per-page brand-aligned composition)
 // ============================================================
 const HERO_ART_VARIANTS = {
-  nosotros: { num: '15', tag: 'Acerca de', side: 'Yabem Vehu · 15 años', badgeNum: '+30', badgeLabel: 'Años de experiencia\ndel equipo consultor', deco: 'rings' },
+  nosotros: { num: '15', tag: 'Acerca de', side: 'Yabem-Vehu · 15 años', badgeNum: '+30', badgeLabel: 'Años de experiencia\ndel equipo consultor', deco: 'rings' },
   guardias: { num: '01', tag: 'Servicio 01', side: 'Guardias intramuros', badgeNum: 'REPSE', badgeLabel: 'ARR23960/2024\nProveedor activo STPS', deco: 'rings' },
   analisis: { num: '02', tag: 'Servicio 02', side: 'Diagnóstico de riesgos', badgeNum: '5', badgeLabel: 'Entregables del\ndiagnóstico integral', deco: 'rings' },
   consultoria: { num: '03', tag: 'Servicio 03', side: 'Estrategia y planeación', badgeNum: 'ASIS', badgeLabel: 'Member · IFPO\nEstándares globales', deco: 'rings' },

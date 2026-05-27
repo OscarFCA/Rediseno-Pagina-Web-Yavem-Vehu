@@ -11,7 +11,7 @@
 ## Meta SEO
 
 ```
-<title>Contacto | Cotiza tu Servicio de Seguridad Privada | Yabem Vehu</title>
+<title>Contacto | Cotiza tu Servicio de Seguridad Privada | Yabem-Vehu</title>
 <meta name="description" content="Cotiza guardias de seguridad, análisis de riesgos o consultoría para tu empresa en CDMX. Respondemos en menos de 24 horas. REPSE activo.">
 <link rel="canonical" href="https://cotiza.yabem-vehu.com.mx/contacto">
 ```

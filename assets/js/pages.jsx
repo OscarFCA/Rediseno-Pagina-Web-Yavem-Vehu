@@ -51,10 +51,10 @@ function HomePage() {
                   <img src="assets/img/cert-asis.webp" alt="ASIS International — Miembro activo de la asociación internacional de seguridad." />
                 </span>
               </a>
-              <a className="hero-cert" href="#" onClick={(e) => e.preventDefault()} aria-label="SSC Permiso 0605-15 — Permiso de operación vigente ante la Secretaría de Seguridad Ciudadana.">
+              <a className="hero-cert" href="#" onClick={(e) => e.preventDefault()} aria-label="DGSP CDMX 0605-15 / Exp. 3788-14 — Permiso de operación vigente ante la Secretaría de Seguridad Ciudadana.">
                 <span className="hero-cert__logo">
-                  <span dangerouslySetInnerHTML={{ __html: '<!-- SSC Permiso 0605-15: Permiso de operación vigente ante la Secretaría de Seguridad Ciudadana. -->' }} />
-                  <img src="assets/img/cert-ssc.webp" alt="SSC Permiso 0605-15 — Permiso de operación vigente ante la Secretaría de Seguridad Ciudadana." />
+                  <span dangerouslySetInnerHTML={{ __html: '<!-- DGSP CDMX 0605-15 / Exp. 3788-14: Permiso de operación vigente ante la Secretaría de Seguridad Ciudadana. -->' }} />
+                  <img src="assets/img/cert-ssc.webp" alt="DGSP CDMX 0605-15 / Exp. 3788-14 — Permiso de operación vigente ante la Secretaría de Seguridad Ciudadana." />
                 </span>
               </a>
             </div>
@@ -157,7 +157,7 @@ function NosotrosPage() {
                 <div className="metric"><div className="metric__value">+30</div><div className="metric__label">Años equipo consultor</div></div>
               </div>
             </div>
-            <img src="assets/img/yb-equipo.webp" alt="Equipo Yabem Vehu" />
+            <img src="assets/img/yb-equipo.webp" alt="Equipo Yabem-Vehu" />
           </div>
         </div>
       </section>
@@ -256,7 +256,7 @@ function NosotrosPage() {
             <span className="section-marker"></span>
             <h2 className="section__title" style={{ fontSize: "clamp(26px, 6vw, 40px)" }}>Por qué elegirnos</h2>
             <p className="section__subtitle">
-              Elegir a Yabem Vehu es optar por un socio de seguridad con visión de futuro y compromiso total. Nos distinguimos por nuestro estricto cumplimiento normativo, operando siempre con todos los permisos y registros en regla.
+              Elegir a Yabem-Vehu es optar por un socio de seguridad con visión de futuro y compromiso total. Nos distinguimos por nuestro estricto cumplimiento normativo, operando siempre con todos los permisos y registros en regla.
             </p>
           </div>
 
@@ -271,9 +271,9 @@ function NosotrosPage() {
               </div>
             </article>
             <article className="cert-card" style={{ background: 'rgba(255,255,255,0.04)', borderColor: 'rgba(255,255,255,0.12)' }}>
-              <div className="cert-card__logo" style={{ background: 'rgba(255,255,255,0.08)' }}><img src="assets/img/cert-ssc.webp" alt="SSC" /></div>
+              <div className="cert-card__logo" style={{ background: 'rgba(255,255,255,0.08)' }}><img src="assets/img/cert-ssc.webp" alt="DGSP CDMX 0605-15 / Exp. 3788-14" /></div>
               <div>
-                <div className="cert-card__title" style={{ color: '#fff' }}>SSC</div>
+                <div className="cert-card__title" style={{ color: '#fff' }}>DGSP CDMX 0605-15 / Exp. 3788-14</div>
                 <div className="cert-card__code">Permiso 0605-15 / Exp. 3788-14</div>
                 <div className="cert-card__body" style={{ color: 'rgba(255,255,255,0.78)' }}>Operamos con autorización vigente de la Secretaría de Seguridad Ciudadana.</div>
               </div>
@@ -487,7 +487,7 @@ function GuardiasPage() {
         primary="Solicitar cotización"
         secondary="Cotizar ahora"
         secondaryHref={waLink(WA_MESSAGES.guardias)}
-        badges={['ASIS Member', 'SSC 0605-15', 'REPSE Activo']} />
+        badges={['ASIS Member', 'DGSP CDMX 0605-15 / Exp. 3788-14', 'REPSE Activo']} />
       
 
       <PainSection
@@ -504,7 +504,7 @@ function GuardiasPage() {
         items={[
         { title: 'Selección con más de 30 criterios', body: 'Cada guardia pasa por un proceso riguroso: evaluación psicométrica, antecedentes, capacitación certificada y prueba de campo antes de ingresar a tu instalación.' },
         { title: 'Capacitación bajo estándares federales', body: 'Formación continua apegada a la Ley Federal de Seguridad Privada y estándares de competencia CONOCER-SEP.' },
-        { title: 'REPSE activo ARR23960/2024', body: 'Contratar con Yabem Vehu no genera contingencias laborales para tu empresa. Operamos 100% dentro del marco legal.' }]
+        { title: 'REPSE activo ARR23960/2024', body: 'Contratar con Yabem-Vehu no genera contingencias laborales para tu empresa. Operamos 100% dentro del marco legal.' }]
         } />
       
 
@@ -533,7 +533,7 @@ function GuardiasPage() {
         title="Operamos con todos los permisos en regla"
         items={[
         { logo: 'assets/img/cert-repse.webp', title: 'REPSE', code: 'ARR23960/2024', body: 'Registro de Prestadoras de Servicios Especializados ante la STPS. Contratar con nosotros no te genera riesgos laborales.' },
-        { logo: 'assets/img/cert-ssc.webp', title: 'SSC', code: 'Permiso 0605-15', body: 'Autorización vigente de la Secretaría de Seguridad Ciudadana de la CDMX.' },
+        { logo: 'assets/img/cert-ssc.webp', title: 'DGSP CDMX 0605-15 / Exp. 3788-14', code: 'Permiso 0605-15', body: 'Autorización vigente de la Secretaría de Seguridad Ciudadana de la CDMX.' },
         { logo: 'assets/img/cert-asis.webp', title: 'ASIS International', code: 'Member', body: 'Nuestros directivos reciben formación de vanguardia en seguridad.' }]
         } />
       
@@ -690,7 +690,7 @@ function ConsultoriaPage() {
         primary="Hablar con un consultor"
         secondary="Contactar ahora"
         secondaryHref={waLink(WA_MESSAGES.consultoria)}
-        badges={['ASIS Member', 'IFPO Member', 'SSC Vigente']} />
+        badges={['ASIS Member', 'IFPO Member', 'DGSP CDMX 0605-15 / Exp. 3788-14']} />
       
 
       <PainSection
@@ -749,12 +749,12 @@ function ConsultoriaPage() {
       <CertsCardsSection
         surface={false}
         title="Consultores con certificación internacional"
-        body="Cuando contratas consultoría con Yabem Vehu, trabajas con especialistas alineados a estándares globales."
+        body="Cuando contratas consultoría con Yabem-Vehu, trabajas con especialistas alineados a estándares globales."
         items={[
         { logo: 'assets/img/cert-asis.webp', title: 'ASIS International', code: 'Member', body: 'Estándares internacionales de gestión de riesgos y seguridad corporativa.' },
         { logo: 'assets/img/cert-ifpo.png', title: 'IFPO', code: 'Member', body: 'Formación especializada en protección y consultoría de seguridad.' },
         { logo: 'assets/img/cert-repse.webp', title: 'REPSE', code: 'ARR23960/2024', body: 'Operamos dentro del marco legal. Sin contingencias laborales para tu empresa.' },
-        { logo: 'assets/img/cert-ssc.webp', title: 'SSC', code: 'Permiso 0605-15', body: 'Autorización vigente de la Secretaría de Seguridad Ciudadana.' }]
+        { logo: 'assets/img/cert-ssc.webp', title: 'DGSP CDMX 0605-15 / Exp. 3788-14', code: 'Permiso 0605-15', body: 'Autorización vigente de la Secretaría de Seguridad Ciudadana.' }]
         } />
       
 

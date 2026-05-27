@@ -38,19 +38,19 @@ function App() {
   useEffect(() => {
     // Update document title + meta description per route (SPA SEO + GA4 pageview)
     const meta = {
-      '/':              { t: 'Empresa de Seguridad Privada en CDMX | Yabem Vehu — 15 años, REPSE Activo',
+      '/':              { t: 'Empresa de Seguridad Privada en CDMX | Yabem-Vehu — 15 años, REPSE Activo',
                           d: 'Empresa de seguridad privada en CDMX y Estado de México. Guardias intramuros, análisis de riesgos y consultoría. REPSE ARR23960/2024.' },
-      '/nosotros':      { t: 'Nosotros | Yabem Vehu — Seguridad Privada con 15 Años',
-                          d: 'Empresa 100% mexicana con 15 años protegiendo activos. REPSE, SSC, ASIS, IFPO.' },
-      '/guardias':      { t: 'Guardias de Seguridad Intramuros para Empresas en CDMX | Yabem Vehu',
+      '/nosotros':      { t: 'Nosotros | Yabem-Vehu — Seguridad Privada con 15 Años',
+                          d: 'Empresa 100% mexicana con 15 años protegiendo activos. REPSE, DGSP CDMX 0605-15 / Exp. 3788-14, ASIS, IFPO.' },
+      '/guardias':      { t: 'Guardias de Seguridad Intramuros para Empresas en CDMX | Yabem-Vehu',
                           d: 'Guardias certificados, REPSE activo ARR23960/2024. Cotiza en menos de 24 horas.' },
-      '/analisis':      { t: 'Análisis de Riesgos Empresariales en CDMX | Yabem Vehu',
+      '/analisis':      { t: 'Análisis de Riesgos Empresariales en CDMX | Yabem-Vehu',
                           d: 'Diagnóstico integral de vulnerabilidades y plan de acción. Especialistas ASIS/IFPO.' },
-      '/consultoria':   { t: 'Consultoría en Seguridad Privada en CDMX | Yabem Vehu',
+      '/consultoria':   { t: 'Consultoría en Seguridad Privada en CDMX | Yabem-Vehu',
                           d: 'Estrategia y diagnóstico de seguridad empresarial. Consultores certificados.' },
-      '/contacto':      { t: 'Cotiza tu Servicio de Guardias — Respuesta en Menos de 24 Horas | Yabem Vehu',
+      '/contacto':      { t: 'Cotiza tu Servicio de Guardias — Respuesta en Menos de 24 Horas | Yabem-Vehu',
                           d: 'Cotiza guardias, análisis de riesgos o consultoría para tu empresa. REPSE activo.' },
-      '/oportunidades': { t: 'Oportunidades Laborales | Únete a Yabem Vehu',
+      '/oportunidades': { t: 'Oportunidades Laborales | Únete a Yabem-Vehu',
                           d: 'Postúlate para guardia, supervisor, analista o consultor de seguridad. Empresa 100% mexicana, REPSE activo.' },
     };
     const m = meta[path] || meta['/'];
