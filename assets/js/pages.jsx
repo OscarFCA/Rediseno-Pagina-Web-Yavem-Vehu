@@ -30,7 +30,7 @@ function HomePage() {
           <div className="hero__content">
             <span className="eyebrow eyebrow--light">Seguridad Privada</span>
             <h1 className="hero__headline" style={{ fontSize: "clamp(34px, 8.5vw, 70px)" }}>Protegemos lo que<br/>más te importa</h1>
-            <p className="hero__subtitle">Más de 15 años protegiendo activos en los sectores Farmacéutico, Textil, Automotriz y Residencial.
+            <p className="hero__subtitle">Más de 15 años protegiendo activos empresariales en México.
 
             </p>
             <div className="hero__ctas">
