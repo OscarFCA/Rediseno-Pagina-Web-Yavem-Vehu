@@ -651,7 +651,7 @@ function buildLeadMailto(values, score, level, breakdown) {
     '—',
     'Lead generado automáticamente desde yabem-vehu.com.mx'
   ].filter(Boolean);
-  return `mailto:contacto@yabem-vehu.com?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(lines.join('\n'))}`;
+  return `mailto:ventas@yabem-vehu.com?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(lines.join('\n'))}`;
 }
 
 function QualForm({ buttonText = 'Solicitar cotización', includeService = false, includePhone = false, includeMessage = false, hideGuardias = false, defaultService = '', onSubmit }) {
