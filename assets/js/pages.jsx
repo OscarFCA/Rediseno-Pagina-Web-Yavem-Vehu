@@ -504,8 +504,8 @@ function GuardiasPage() {
       <ValueSection
         title={<>Por qué nuestros guardias<br />son diferentes</>}
         items={[
-        { title: 'Selección con más de 30 criterios', body: 'Cada guardia pasa por un proceso riguroso: evaluación psicométrica, antecedentes, capacitación certificada y prueba de campo antes de ingresar a tu instalación.' },
-        { title: 'Capacitación bajo estándares internacionales', body: 'Formación continua apegada a la Ley Federal de Seguridad Privada y estándares de competencia CONOCER-SEP.' },
+        { title: 'Reclutamiento y selección riguroso', body: 'Cada guardia pasa por un proceso riguroso: evaluación psicométrica, antecedentes, capacitación certificada y prueba de campo antes de ingresar a tu instalación.' },
+        { title: 'Capacitación bajo estándares internacionales', body: 'Formación continua apegada a la Ley Federal de Seguridad Privada, estándares de competencia CONOCER SEP y estándares de ASIS Internacional.' },
         { title: 'REPSE activo ARR23960/2024', body: 'Contratar con Yabem-Vehu no genera contingencias laborales para tu empresa. Operamos 100% dentro del marco legal.' }]
         } />
       
