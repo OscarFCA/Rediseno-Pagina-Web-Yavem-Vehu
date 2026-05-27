@@ -669,8 +669,8 @@ function QualForm({ buttonText = 'Solicitar cotización', includeService = false
     const errs = {};
     if (!values.nombre.trim()) errs.nombre = 'Ingresa tu nombre completo.';
     if (!values.empresa.trim()) errs.empresa = 'Ingresa el nombre de tu empresa.';
-    if (!values.email.trim()) errs.email = 'Ingresa tu correo corporativo.';else
-    if (FREE_EMAIL_RE.test(values.email)) errs.email = 'Por favor usa tu correo corporativo, no un correo personal.';
+    if (!values.email.trim()) errs.email = 'Ingresa tu correo.';else
+    if (FREE_EMAIL_RE.test(values.email)) errs.email = 'Por favor usa tu correo de trabajo, no un correo personal.';
     if (includePhone && !values.telefono.trim()) errs.telefono = 'Ingresa un teléfono de contacto.';
     if (includeService && !values.servicio) errs.servicio = 'Selecciona un servicio.';
     const guardiasReq = !hideGuardias && (includeService ? values.servicio === 'guardias' : true);
@@ -739,7 +739,7 @@ function QualForm({ buttonText = 'Solicitar cotización', includeService = false
 
       <div className={"form-row " + (includePhone ? "form-row--2" : "")}>
         <div className="form-field">
-          <label className="form-label" htmlFor="email">Correo corporativo <span className="req">*</span></label>
+          <label className="form-label" htmlFor="email">Correo <span className="req">*</span></label>
           <input id="email" type="email" className={"form-input " + (errors.email ? "form-input--error" : "")}
           placeholder="correo@tuempresa.com" value={values.email} onChange={set('email')} />
           {errors.email && <div className="form-error">{errors.email}</div>}
