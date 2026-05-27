@@ -406,7 +406,7 @@ function StepsSection({ title, steps, surface = false, navy = false }) {
 
 }
 
-function CertsCardsSection({ title, body, items, surface = true }) {
+function CertsCardsSection({ title, body, items, surface = true, large = false }) {
   return (
     <section className={"section " + (surface ? "section--surface" : "")} data-screen-label="Certificaciones">
       <div className="container">
@@ -415,7 +415,7 @@ function CertsCardsSection({ title, body, items, surface = true }) {
           <h2 className="section__title">{title}</h2>
           {body && <p className="section__subtitle">{body}</p>}
         </div>
-        <div className="cert-cards">
+        <div className={"cert-cards" + (large ? " cert-cards--large" : "")}>
           {items.map((c, i) =>
           <article className="cert-card" key={i}>
               <div className="cert-card__logo">{c.logo ? <img src={c.logo} alt={c.title} /> : <Icon.Award size={28} />}</div>
@@ -580,7 +580,7 @@ function AnalisisPage() {
         primary="Solicitar diagnóstico"
         secondary="Cotizar ahora"
         secondaryHref={waLink(WA_MESSAGES.analisis)}
-        badges={['Diagnóstico integral', 'Plan accionable', 'IFPO Member']} />
+        badges={['Diagnóstico integral', 'Plan accionable', 'ASIS Internacional']} />
       
 
       <PainSection
@@ -632,10 +632,14 @@ function AnalisisPage() {
         surface
         title="Sectores donde hemos trabajado"
         sectors={[
-        { title: 'Farmacéutico', body: 'Control de acceso a laboratorios, almacenes de materia prima y áreas de manufactura. Protección de activos regulados.' },
-        { title: 'Textil', body: 'Diagnóstico de merma en líneas de producción y almacenes. Identificación de vectores de robo interno y externo.' },
-        { title: 'Residencial y Corporativo', body: 'Evaluación de accesos, puntos ciegos, vulnerabilidades perimetrales y protocolos de respuesta ante incidentes.' },
-        { title: 'Industrial', body: 'Análisis de carga y descarga, control de proveedores, protección de maquinaria y puntos críticos de la cadena logística.' }]
+        { icon: 'Flask',       title: 'Farmacéutico',  body: 'Control de acceso a laboratorios, almacenes de materia prima y áreas de manufactura. Protección de activos regulados y cadena de custodia certificada.' },
+        { icon: 'Scissors',    title: 'Textil',        body: 'Diagnóstico y reducción de merma en líneas de producción y almacenes. Identificación de vectores de robo interno y externo en plantas activas.' },
+        { icon: 'Home',        title: 'Residencial',   body: 'Control de acceso vehicular y peatonal, rondines programados y comunicación directa con administración. Servicio para fraccionamientos, condominios y torres corporativas.' },
+        { icon: 'Building',    title: 'Corporativo',   body: 'Protección de instalaciones de oficinas, control de visitantes y colaboradores, y protocolos de respuesta ante incidentes en edificios con múltiples inquilinos.' },
+        { icon: 'Car',         title: 'Automotriz',    body: 'Seguridad en agencias, talleres y patios de vehículos. Control de acceso de personal, proveedores y clientes. Prevención de robo de partes y unidades.' },
+        { icon: 'Wrench',      title: 'Industrial',    body: 'Vigilancia perimetral, control de carga y descarga, y protección de maquinaria de alto valor. Esquemas de seguridad para operaciones 24/7.' },
+        { icon: 'ShoppingBag', title: 'Retail',        body: 'Prevención de merma en tienda, control de acceso a bodegas y protección de cajas. Guardias entrenados para entornos de alto flujo de personas.' },
+        { icon: 'HardHat',     title: 'Construcción',  body: 'Custodia de materiales, maquinaria y equipo en obra. Control de acceso de trabajadores y proveedores. Vigilancia nocturna y en fines de semana cuando la obra está sin personal.' }]
         } />
       
 
@@ -651,11 +655,11 @@ function AnalisisPage() {
       
 
       <CertsCardsSection
-        title="Respaldados por certificaciones internacionales"
+        title="Respaldados por una formación internacional."
+        large
         items={[
-        { logo: 'assets/img/cert-asis.webp', title: 'ASIS International', code: 'Member', body: 'Nuestros especialistas en análisis de riesgos están alineados a los estándares internacionales más exigentes.' },
-        { logo: 'assets/img/cert-ifpo.png', title: 'IFPO', code: 'Member', body: 'International Foundation for Protection Officers. Formación especializada en protección y gestión de riesgos.' },
-        { logo: 'assets/img/cert-repse.webp', title: 'REPSE', code: 'ARR23960/2024', body: 'Operamos dentro del marco legal mexicano. Sin contingencias para tu empresa.' }]
+        { logo: 'assets/img/cert-asis.webp', title: 'ASIS Internacional', code: 'Member', body: 'Nuestros especialistas en análisis de riesgos están alineados a los estándares internacionales más exigentes.' },
+        { logo: 'assets/img/cert-ifpo.png',  title: 'IFPO',               code: 'Member', body: 'International Foundation for Protection Officers. Formación especializada en protección y gestión de riesgos.' }]
         } />
       
 

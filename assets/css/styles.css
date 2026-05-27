@@ -640,6 +640,11 @@ img, video, iframe, svg, picture { max-width: 100%; height: auto; }
   grid-template-columns: 1fr;
 }
 @media (min-width: 768px) { .cert-cards { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 768px) { .cert-cards--large { grid-template-columns: repeat(2, 1fr); max-width: 880px; margin: 0 auto; } }
+.cert-cards--large .cert-card { padding: 32px; gap: 24px; align-items: center; }
+.cert-cards--large .cert-card__logo { width: 112px; height: 112px; padding: 14px; }
+.cert-cards--large .cert-card__title { font-size: 20px; }
+.cert-cards--large .cert-card__body { font-size: 15px; }
 .cert-card {
   background: var(--color-white);
   border: 1px solid var(--color-border);
