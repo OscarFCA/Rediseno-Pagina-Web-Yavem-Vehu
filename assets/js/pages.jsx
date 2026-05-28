@@ -483,7 +483,7 @@ function GuardiasPage() {
       <PageHero
         eyebrow="Guardias de Seguridad"
         title="Seguridad Intramuros para tus Activos Empresariales"
-        subtitle="Profesionales certificados, seleccionados con rigor y capacitados bajo estándares internacionales. Tu operación, protegida."
+        subtitle="Profesionales capacitados, seleccionados con rigor y formados bajo estándares internacionales. Tu operación, protegida."
         variant="guardias"
         primary="Solicitar cotización"
         secondary="Cotizar ahora"
