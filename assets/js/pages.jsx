@@ -1,5 +1,5 @@
 /* global React, Icon, Header, Footer, WhatsAppFloat, ClientsMarquee, CtaFinal, Testimonial, TestimonialCarousel, TESTIMONIALS, QualForm, PageHero, navigate, WA_LINK, WA_MESSAGES, waLink, PUESTOS */
-const { useState } = React;
+const { useState, useRef } = React;
 
 // ============================================================
 // HOME PAGE
@@ -443,7 +443,7 @@ function FinalFormSection({ title, subtitle, buttonText, hideGuardias = false, w
             <p className="section__subtitle">{subtitle}</p>
             <p className="mt-3 muted" style={{ color: 'rgba(255,255,255,0.7)', fontSize: 15 }}>
               ¿Prefieres hablar ahora? &nbsp;
-              <a href={waHref} target="_blank" rel="noopener noreferrer" style={{ color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.4)' }}>
+              <a data-track-location="form_inline" href={waHref} target="_blank" rel="noopener noreferrer" style={{ color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.4)' }}>
                 Escríbenos por WhatsApp →
               </a>
             </p>
@@ -838,7 +838,7 @@ function ContactoPage() {
                     <div className="contact-card__sub">55 4127 5596</div>
                   </div>
                 </a>
-                <a className="contact-card contact-card--wa" href={waLink(WA_MESSAGES.contacto)} target="_blank" rel="noopener noreferrer">
+                <a className="contact-card contact-card--wa" data-track-location="contact_card" href={waLink(WA_MESSAGES.contacto)} target="_blank" rel="noopener noreferrer">
                   <div className="contact-card__icon"><Icon.WhatsApp size={22} /></div>
                   <div>
                     <div className="contact-card__title">WhatsApp</div>
@@ -902,8 +902,17 @@ function CareerForm() {
   const [errors, setErrors] = useState({});
   const [sending, setSending] = useState(false);
   const [sendError, setSendError] = useState(false);
+  const formStartedRef = useRef(false);
 
   const set = (k) => (e) => setValues((v) => ({ ...v, [k]: e.target.value }));
+
+  // GA4: dispara form_start una sola vez en el primer focus/change del formulario.
+  // Permite separar postulaciones vs visitantes que solo miran la página.
+  function onFirstInteraction() {
+    if (formStartedRef.current) return;
+    formStartedRef.current = true;
+    if (window.yvTrack) window.yvTrack('form_start', { form: 'postulacion' });
+  }
 
   async function submit(e) {
     e.preventDefault();
@@ -944,7 +953,7 @@ function CareerForm() {
   }
 
   return (
-    <form className="form" onSubmit={submit} noValidate>
+    <form className="form" onSubmit={submit} onFocus={onFirstInteraction} onChange={onFirstInteraction} noValidate>
       <input className="honeypot" type="text" tabIndex="-1" autoComplete="off"
       value={values.honeypot} onChange={set('honeypot')} aria-hidden="true" />
 
@@ -991,7 +1000,7 @@ function CareerForm() {
       <button type="submit" className="btn btn-primary btn-full" disabled={sending}>{sending ? 'Enviando…' : 'Enviar postulación'}</button>
       {sendError &&
         <div role="alert" style={{ marginTop: 12, padding: '12px 16px', background: '#FFF1F0', border: '1px solid #FECACA', borderLeft: '4px solid #992824', borderRadius: 8, color: '#7A1F1C', fontSize: 14, lineHeight: 1.5 }}>
-          No pudimos enviar tu postulación en este momento. Intenta de nuevo o escríbenos por <a href={waLink(WA_MESSAGES.careerForm)} target="_blank" rel="noopener noreferrer" style={{ color: '#7A1F1C', textDecoration: 'underline', fontWeight: 700 }}>WhatsApp</a>.
+          No pudimos enviar tu postulación en este momento. Intenta de nuevo o escríbenos por <a data-track-location="career_form_error" href={waLink(WA_MESSAGES.careerForm)} target="_blank" rel="noopener noreferrer" style={{ color: '#7A1F1C', textDecoration: 'underline', fontWeight: 700 }}>WhatsApp</a>.
         </div>
       }
 
@@ -1083,7 +1092,7 @@ function OportunidadesPage() {
               <p className="hero__subtitle" style={{ marginBottom: 28 }}>Déjanos tus datos y un mensaje breve sobre ti. Si tu perfil coincide con una vacante abierta, nuestro equipo de Gestión Humana te contactará en los próximos días hábiles.</p>
 
               <div className="contact-cards" style={{ maxWidth: 380 }}>
-                <a className="contact-card contact-card--wa" href={waLink(WA_MESSAGES.oportunidades)} target="_blank" rel="noopener noreferrer">
+                <a className="contact-card contact-card--wa" data-track-location="career_contact_card" href={waLink(WA_MESSAGES.oportunidades)} target="_blank" rel="noopener noreferrer">
                   <div className="contact-card__icon"><Icon.WhatsApp size={22} /></div>
                   <div>
                     <div className="contact-card__title">WhatsApp directo</div>

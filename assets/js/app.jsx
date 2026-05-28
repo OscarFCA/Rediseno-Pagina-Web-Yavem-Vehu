@@ -65,6 +65,7 @@ function App() {
     if (descTag) descTag.setAttribute('content', m.d);
     // GA4 pageview por ruta SPA
     if (window.yvTrack) window.yvTrack('page_view', { page_path: path, page_title: m.t });
+    if (window.yvResetTracking) window.yvResetTracking();
   }, [path]);
 
   const Page = ROUTES[path] || HomePage;

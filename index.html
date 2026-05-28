@@ -114,13 +114,61 @@
     gtag('js', new Date());
     gtag('config', 'G-6J23HZ7MFN', { 'anonymize_ip': true });
     window.yvTrack = function(name, params){ try { gtag('event', name, params || {}); } catch(e){} };
+
+    // Click delegation: WhatsApp/tel/mailto con location precisa via data-track-location
     document.addEventListener('click', function(e){
       var a = e.target.closest && e.target.closest('a'); if(!a) return;
       var href = a.getAttribute('href') || '';
-      if (/wa\.me|api\.whatsapp\.com/i.test(href)) window.yvTrack('whatsapp_click', { location: a.className || 'link' });
-      if (/^tel:/i.test(href))    window.yvTrack('phone_click',   { number: href.replace('tel:','') });
-      if (/^mailto:/i.test(href)) window.yvTrack('email_click',   { address: href.replace('mailto:','') });
+      function locOf(el){
+        var src = el.closest('[data-track-location]');
+        if (src) return src.getAttribute('data-track-location');
+        var sec = el.closest('[data-screen-label]');
+        return sec ? ('section:' + sec.getAttribute('data-screen-label')) : (el.className || 'link');
+      }
+      if (/wa\.me|api\.whatsapp\.com/i.test(href)) window.yvTrack('whatsapp_click', { location: locOf(a) });
+      if (/^tel:/i.test(href))    window.yvTrack('phone_click',   { number: href.replace('tel:',''), location: locOf(a) });
+      if (/^mailto:/i.test(href)) window.yvTrack('email_click',   { address: href.replace('mailto:',''), location: locOf(a) });
     }, true);
+
+    // Scroll depth (25/50/75/90) — reset por page_view
+    var yvScrollFired = {};
+    function yvOnScroll(){
+      var doc = document.documentElement;
+      var scrolled = (window.scrollY + window.innerHeight) / Math.max(1, doc.scrollHeight);
+      [25, 50, 75, 90].forEach(function(th){
+        if (!yvScrollFired[th] && scrolled * 100 >= th){
+          yvScrollFired[th] = true;
+          window.yvTrack('scroll_depth', { percent: th, page_path: location.pathname });
+        }
+      });
+    }
+    window.addEventListener('scroll', yvOnScroll, { passive: true });
+
+    // Section view via IntersectionObserver — usa data-screen-label ya presente en cada <section>
+    var yvSectionObserver = null;
+    var yvSectionsSeen = {};
+    function yvObserveSections(){
+      yvSectionsSeen = {};
+      if (yvSectionObserver) { try { yvSectionObserver.disconnect(); } catch(_){} }
+      if (!('IntersectionObserver' in window)) return;
+      yvSectionObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if (!en.isIntersecting) return;
+          var label = en.target.getAttribute('data-screen-label');
+          if (!label || yvSectionsSeen[label]) return;
+          yvSectionsSeen[label] = true;
+          window.yvTrack('lp_section_view', { section: label, page_path: location.pathname });
+        });
+      }, { threshold: 0.5 });
+      document.querySelectorAll('[data-screen-label]').forEach(function(el){ yvSectionObserver.observe(el); });
+    }
+
+    // Reset tracking en cada cambio de ruta SPA (llamado desde app.jsx)
+    window.yvResetTracking = function(){
+      yvScrollFired = {};
+      // Defer para que React monte el DOM nuevo antes de observar
+      setTimeout(yvObserveSections, 50);
+    };
   </script>
 </head>
 <body>
