@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /assets/js/
 
-Sitemap: https://oscarfca.github.io/Rediseno-Pagina-Web-Yavem-Vehu/sitemap.xml
+Sitemap: https://cotiza.yabem-vehu.com.mx/sitemap.xml
