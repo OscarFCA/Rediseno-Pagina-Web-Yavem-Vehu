@@ -1123,7 +1123,7 @@ function ThanksCard({ eyebrow, title, body, conversionEvent }) {
     <section className="section section--surface" data-screen-label="Confirmación">
       <div className="container" style={{ maxWidth: 760 }}>
         <article className="card" style={{ textAlign: 'center', padding: 'var(--space-6) var(--space-5)' }}>
-          <div aria-hidden="true" style={{ width: 72, height: 72, background: 'var(--color-primary)', borderRadius: '50%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto var(--space-4)' }}>
+          <div aria-hidden="true" style={{ width: 72, height: 72, background: '#FFFFFF', border: '3px solid var(--color-accent)', borderRadius: '50%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto var(--space-4)', color: 'var(--color-accent)' }}>
             <Icon.Check size={36} />
           </div>
           {eyebrow && <span className="eyebrow" style={{ marginBottom: 'var(--space-2)' }}>{eyebrow}</span>}
