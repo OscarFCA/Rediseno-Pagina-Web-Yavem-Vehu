@@ -230,7 +230,7 @@ function Footer() {
             <div className="footer__contact">
               <div className="footer__contact-item"><Icon.Mail size={16} /> ventas@yabem-vehu.com</div>
               <div className="footer__contact-item"><Icon.Phone size={16} /> +52 55 7879 2146</div>
-              <div className="footer__contact-item"><Icon.MapPin size={16} /> Insurgentes Sur 216, interior 206-5, Ciudad de México</div>
+              <div className="footer__contact-item"><Icon.MapPin size={16} /> Av. Insurgentes Sur No. 216, Int. 206-5 Col. Roma Norte, Alcaldía Cuauhtémoc, CDMX</div>
             </div>
           </div>
           <div>
