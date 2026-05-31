@@ -272,7 +272,7 @@ function NosotrosPage() {
             <article className="cert-card" style={{ background: 'rgba(255,255,255,0.04)', borderColor: 'rgba(255,255,255,0.12)' }}>
               <div className="cert-card__logo" style={{ background: 'rgba(255,255,255,0.08)' }}><img src="assets/img/cert-ssc.webp" alt="DGSP CDMX 0605-15 / Exp. 3788-14" /></div>
               <div>
-                <div className="cert-card__title" style={{ color: '#fff' }}>DGSP CDMX 0605-15 / Exp. 3788-14</div>
+                <div className="cert-card__title" style={{ color: '#fff' }}>DGSP CDMX</div>
                 <div className="cert-card__code">Permiso 0605-15 / Exp. 3788-14</div>
                 <div className="cert-card__body" style={{ color: 'rgba(255,255,255,0.78)' }}>Operamos con autorización vigente de la Secretaría de Seguridad Ciudadana.</div>
               </div>
