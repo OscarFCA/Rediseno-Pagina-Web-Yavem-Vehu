@@ -768,7 +768,7 @@ function ConsultoriaPage() {
         items={[
         { logo: 'assets/img/cert-asis.webp',    title: 'ASIS Internacional', code: 'Member',             body: 'Estándares internacionales de gestión de riesgos y seguridad corporativa.' },
         { logo: 'assets/img/cert-ifpo.png',     title: 'IFPO',               code: 'Member',             body: 'Formación especializada en protección y consultoría de seguridad.' },
-        { logo: 'assets/img/logo-EI-conocer-transparente-1-300x238.png', title: 'CONOCER SEP', code: 'Evaluador Independiente', body: 'Red CONOCER de Prestadores de Servicios. Acreditación de competencias laborales en seguridad privada.' }]
+        { logo: 'assets/img/logo-EI-conocer-transparente-1-300x238.png', title: 'CONOCER SEP', code: 'Personal Capacitado', body: 'Red CONOCER de Prestadores de Servicios. Acreditación de competencias laborales en seguridad privada.' }]
         } />
       
 
