@@ -111,6 +111,7 @@ function HomePage() {
       </section>
 
       <CtaFinal
+        trackLocation="cta_final_home"
         title="Da el primer paso hacia una seguridad integral"
         body="Cuéntanos sobre tu empresa y recibe una propuesta personalizada. Respondemos en menos de 24 horas." />
       
@@ -304,6 +305,7 @@ function NosotrosPage() {
       </section>
 
       <CtaFinal
+        trackLocation="cta_final_nosotros"
         title="Da el primer paso hacia una seguridad integral"
         body="Cuéntanos sobre tu empresa y recibe una propuesta personalizada. Respondemos en menos de 24 horas." />
       
@@ -431,8 +433,9 @@ function CertsCardsSection({ title, body, items, surface = true, large = false }
 
 }
 
-function FinalFormSection({ title, subtitle, buttonText, hideGuardias = false, waMessage, defaultService = '' }) {
+function FinalFormSection({ title, subtitle, buttonText, hideGuardias = false, waMessage, defaultService = '', trackLocation = 'cta_final' }) {
   const waHref = waMessage ? waLink(waMessage) : WA_LINK;
+  const onWAClick = () => { if (window.yvWAClick) window.yvWAClick(trackLocation); };
   return (
     <section className="section section--navy" data-screen-label="Formulario">
       <div className="container">
@@ -443,7 +446,7 @@ function FinalFormSection({ title, subtitle, buttonText, hideGuardias = false, w
             <p className="section__subtitle">{subtitle}</p>
             <p className="mt-3 muted" style={{ color: 'rgba(255,255,255,0.7)', fontSize: 15 }}>
               ¿Prefieres hablar ahora? &nbsp;
-              <a data-track-location="form_inline" href={waHref} target="_blank" rel="noopener noreferrer" style={{ color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.4)' }}>
+              <a data-track-location={trackLocation} onClick={onWAClick} href={waHref} target="_blank" rel="noopener noreferrer" style={{ color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.4)' }}>
                 Escríbenos por WhatsApp →
               </a>
             </p>
@@ -487,6 +490,7 @@ function GuardiasPage() {
         variant="guardias"
         primary="Solicitar cotización"
         secondary="Cotizar ahora"
+        trackLocation="hero_guardias"
         secondaryHref={waLink(WA_MESSAGES.guardias)}
         badges={['ASIS Member', 'DGSP CDMX · Permiso 0605-15 · Exp. 3788-14', 'REPSE Activo']} />
       
@@ -560,6 +564,7 @@ function GuardiasPage() {
         subtitle="Cuéntanos tus necesidades y te enviamos una propuesta en menos de 24 horas."
         buttonText="Solicitar cotización"
         defaultService="guardias"
+        trackLocation="cta_final_guardias"
         waMessage={WA_MESSAGES.guardias} />
       
     </div>);
@@ -579,6 +584,7 @@ function AnalisisPage() {
         variant="analisis"
         primary="Solicitar diagnóstico"
         secondary="Cotizar ahora"
+        trackLocation="hero_analisis"
         secondaryHref={waLink(WA_MESSAGES.analisis)}
         badges={['Diagnóstico integral', 'Plan accionable', 'ASIS Internacional']} />
       
@@ -681,6 +687,7 @@ function AnalisisPage() {
         buttonText="Solicitar diagnóstico"
         hideGuardias
         defaultService="analisis"
+        trackLocation="cta_final_analisis"
         waMessage={WA_MESSAGES.analisis} />
       
     </div>);
@@ -700,6 +707,7 @@ function ConsultoriaPage() {
         variant="consultoria"
         primary="Hablar con un consultor"
         secondary="Contactar ahora"
+        trackLocation="hero_consultoria"
         secondaryHref={waLink(WA_MESSAGES.consultoria)}
         badges={['ASIS Member', 'IFPO Member', 'CONOCER-SEP']} />
       
@@ -790,6 +798,7 @@ function ConsultoriaPage() {
         buttonText="Solicitar consultoría"
         hideGuardias
         defaultService="consultoria"
+        trackLocation="cta_final_consultoria"
         waMessage={WA_MESSAGES.consultoria} />
       
     </div>);
@@ -838,7 +847,7 @@ function ContactoPage() {
                     <div className="contact-card__sub">55 4127 5596</div>
                   </div>
                 </a>
-                <a className="contact-card contact-card--wa" data-track-location="contact_card" href={waLink(WA_MESSAGES.contacto)} target="_blank" rel="noopener noreferrer">
+                <a className="contact-card contact-card--wa" data-track-location="contact_card_contacto" onClick={() => { if (window.yvWAClick) window.yvWAClick('contact_card_contacto'); }} href={waLink(WA_MESSAGES.contacto)} target="_blank" rel="noopener noreferrer">
                   <div className="contact-card__icon"><Icon.WhatsApp size={22} /></div>
                   <div>
                     <div className="contact-card__title">WhatsApp</div>
@@ -1000,7 +1009,7 @@ function CareerForm() {
       <button type="submit" className="btn btn-primary btn-full" disabled={sending}>{sending ? 'Enviando…' : 'Enviar postulación'}</button>
       {sendError &&
         <div role="alert" style={{ marginTop: 12, padding: '12px 16px', background: '#FFF1F0', border: '1px solid #FECACA', borderLeft: '4px solid #992824', borderRadius: 8, color: '#7A1F1C', fontSize: 14, lineHeight: 1.5 }}>
-          No pudimos enviar tu postulación en este momento. Intenta de nuevo o escríbenos por <a data-track-location="career_form_error" href={waLink(WA_MESSAGES.careerForm)} target="_blank" rel="noopener noreferrer" style={{ color: '#7A1F1C', textDecoration: 'underline', fontWeight: 700 }}>WhatsApp</a>.
+          No pudimos enviar tu postulación en este momento. Intenta de nuevo o escríbenos por <a data-track-location="form_error_oportunidades" onClick={() => { if (window.yvWAClick) window.yvWAClick('form_error_oportunidades'); }} href={waLink(WA_MESSAGES.careerForm)} target="_blank" rel="noopener noreferrer" style={{ color: '#7A1F1C', textDecoration: 'underline', fontWeight: 700 }}>WhatsApp</a>.
         </div>
       }
 
@@ -1021,6 +1030,7 @@ function OportunidadesPage() {
         primary="Postúlate ahora"
         primaryHref="#postular"
         secondary="Pregunta por WhatsApp"
+        trackLocation="hero_oportunidades"
         secondaryHref={waLink(WA_MESSAGES.oportunidades)}
         badges={['REPSE activo', 'Empresa 100% mexicana', '+15 años de operación']} />
 
@@ -1092,7 +1102,7 @@ function OportunidadesPage() {
               <p className="hero__subtitle" style={{ marginBottom: 28 }}>Déjanos tus datos y un mensaje breve sobre ti. Si tu perfil coincide con una vacante abierta, nuestro equipo de Gestión Humana te contactará en los próximos días hábiles.</p>
 
               <div className="contact-cards" style={{ maxWidth: 380 }}>
-                <a className="contact-card contact-card--wa" data-track-location="career_contact_card" href={waLink(WA_MESSAGES.oportunidades)} target="_blank" rel="noopener noreferrer">
+                <a className="contact-card contact-card--wa" data-track-location="contact_card_oportunidades" onClick={() => { if (window.yvWAClick) window.yvWAClick('contact_card_oportunidades'); }} href={waLink(WA_MESSAGES.oportunidades)} target="_blank" rel="noopener noreferrer">
                   <div className="contact-card__icon"><Icon.WhatsApp size={22} /></div>
                   <div>
                     <div className="contact-card__title">WhatsApp directo</div>
@@ -1123,7 +1133,8 @@ function OportunidadesPage() {
 // ============================================================
 // THANK YOU PAGES (post-formulario)
 // ============================================================
-function ThanksCard({ eyebrow, title, body, conversionEvent, adsEvent }) {
+function ThanksCard({ eyebrow, title, body, conversionEvent, adsEvent, trackLocation = 'confirmacion' }) {
+  const onWAClick = () => { if (window.yvWAClick) window.yvWAClick(trackLocation); };
   React.useEffect(() => {
     if (conversionEvent && window.yvTrack) window.yvTrack(conversionEvent, { event_category: 'conversion' });
     // Evento de conversión nativo de Google Ads — solo se envía al tag AW para no duplicar en GA4
@@ -1144,7 +1155,7 @@ function ThanksCard({ eyebrow, title, body, conversionEvent, adsEvent }) {
           <h1 className="h1" style={{ margin: '0 0 var(--space-2)', color: 'var(--color-primary)' }}>{title}</h1>
           <p className="body-lg" style={{ color: 'var(--color-text-secondary)', margin: '0 auto var(--space-5)', maxWidth: 560 }}>{body}</p>
           <div className="hero__ctas" style={{ justifyContent: 'center' }}>
-            <a className="btn btn-primary" href={WA_LINK} target="_blank" rel="noopener noreferrer">
+            <a className="btn btn-primary" data-track-location={trackLocation} onClick={onWAClick} href={WA_LINK} target="_blank" rel="noopener noreferrer">
               <Icon.WhatsApp size={18} /> Escríbenos por WhatsApp
             </a>
             <a className="btn btn-secondary" onClick={(e) => { e.preventDefault(); navigate('/'); }} href="/">Volver al inicio</a>
@@ -1162,7 +1173,8 @@ function GraciasCotizacionPage() {
         title="Recibimos tu solicitud"
         body={<>Gracias por contactar a <strong style={{ color: 'var(--color-primary)' }}>Yabem-Vehu</strong>. Nuestro equipo de ventas revisará tu información y te contactará en <strong>menos de 24 horas hábiles</strong> con una propuesta personalizada.</>}
         conversionEvent="conversion_cotizacion"
-        adsEvent="qualify_lead" />
+        adsEvent="qualify_lead"
+        trackLocation="confirmacion_cotizacion" />
     </div>);
 }
 
@@ -1173,7 +1185,8 @@ function GraciasPostulacionPage() {
         eyebrow="Confirmación de postulación"
         title="¡Recibimos tu postulación!"
         body={<>Gracias por tu interés en formar parte de <strong style={{ color: 'var(--color-primary)' }}>Yabem-Vehu</strong>. Nuestro equipo de Gestión Humana revisará tu perfil y, si coincide con una vacante abierta, te contactará en los próximos días hábiles.</>}
-        conversionEvent="conversion_postulacion" />
+        conversionEvent="conversion_postulacion"
+        trackLocation="confirmacion_postulacion" />
     </div>);
 }
 

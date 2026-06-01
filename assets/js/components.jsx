@@ -266,8 +266,9 @@ const WA_MESSAGE_BY_PATH = {
 
 function WhatsAppFloat({ current = '/' }) {
   const href = waLink(WA_MESSAGE_BY_PATH[current] || WA_MESSAGES.generic);
+  const onClick = () => { if (window.yvWAClick) window.yvWAClick('float', { page_path: current }); };
   return (
-    <a className="whatsapp-float" data-track-location="float" href={href} target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+    <a className="whatsapp-float" data-track-location="float" onClick={onClick} href={href} target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
       <Icon.WhatsApp size={28} />
     </a>);
 
@@ -306,8 +307,9 @@ function ClientsMarquee({ title = 'Empresas que confían en nosotros' }) {
 // ============================================================
 // CTA FINAL (used on multiple pages)
 // ============================================================
-function CtaFinal({ title, body, primary = 'Solicitar cotización', primaryHref = '/contacto', waMessage }) {
+function CtaFinal({ title, body, primary = 'Solicitar cotización', primaryHref = '/contacto', waMessage, trackLocation = 'cta_final' }) {
   const waHref = waMessage ? waLink(waMessage) : WA_LINK;
+  const onWAClick = () => { if (window.yvWAClick) window.yvWAClick(trackLocation); };
   return (
     <section className="cta-final" data-screen-label="CTA Final">
       <svg className="cta-final__shield cta-final__shield--left" viewBox="0 0 64 64" fill="none" aria-hidden="true">
@@ -326,7 +328,7 @@ function CtaFinal({ title, body, primary = 'Solicitar cotización', primaryHref 
           <p className="cta-final__body">{body}</p>
           <div className="cta-final__ctas">
             <a className="btn btn-primary" onClick={(e) => {e.preventDefault();navigate(primaryHref);}} href={primaryHref}>{primary}</a>
-            <a className="btn btn-secondary-light" data-track-location="cta_final" href={waHref} target="_blank" rel="noopener noreferrer">
+            <a className="btn btn-secondary-light" data-track-location={trackLocation} onClick={onWAClick} href={waHref} target="_blank" rel="noopener noreferrer">
               <Icon.WhatsApp size={18} /> Cotizar por WhatsApp
             </a>
           </div>
@@ -842,7 +844,7 @@ function QualForm({ buttonText = 'Solicitar cotización', includeService = false
       <button type="submit" className="btn btn-primary btn-full" disabled={sending}>{sending ? 'Enviando…' : buttonText}</button>
       {sendError &&
         <div role="alert" style={{ marginTop: 12, padding: '12px 16px', background: '#FFF1F0', border: '1px solid #FECACA', borderLeft: '4px solid #992824', borderRadius: 8, color: '#7A1F1C', fontSize: 14, lineHeight: 1.5 }}>
-          No pudimos enviar tu solicitud en este momento. Intenta de nuevo en unos segundos o escríbenos por <a data-track-location="form_error" href={waLink(WA_MESSAGES.qualForm)} target="_blank" rel="noopener noreferrer" style={{ color: '#7A1F1C', textDecoration: 'underline', fontWeight: 700 }}>WhatsApp</a>.
+          No pudimos enviar tu solicitud en este momento. Intenta de nuevo en unos segundos o escríbenos por <a data-track-location="form_error_contacto" onClick={() => { if (window.yvWAClick) window.yvWAClick('form_error_contacto'); }} href={waLink(WA_MESSAGES.qualForm)} target="_blank" rel="noopener noreferrer" style={{ color: '#7A1F1C', textDecoration: 'underline', fontWeight: 700 }}>WhatsApp</a>.
         </div>
       }
 
@@ -889,7 +891,8 @@ function PageHeroArt({ variant = 'guardias' }) {
 // ============================================================
 // PAGE HERO (interior pages)
 // ============================================================
-function PageHero({ eyebrow, title, subtitle, variant, primary = 'Solicitar cotización', primaryHref = '/contacto', secondary, secondaryHref = WA_LINK, secondaryExternal = true, badges }) {
+function PageHero({ eyebrow, title, subtitle, variant, primary = 'Solicitar cotización', primaryHref = '/contacto', secondary, secondaryHref = WA_LINK, secondaryExternal = true, badges, trackLocation = 'hero' }) {
+  const onWAClick = () => { if (window.yvWAClick) window.yvWAClick(trackLocation); };
   return (
     <section className="hero" data-screen-label="Hero">
       <div className="container hero__inner">
@@ -914,7 +917,7 @@ function PageHero({ eyebrow, title, subtitle, variant, primary = 'Solicitar coti
               }} href={primaryHref}>{primary}</a>
               {secondary && (
               secondaryExternal ?
-              <a className="btn btn-secondary-light" data-track-location="hero" href={secondaryHref} target="_blank" rel="noopener noreferrer"><Icon.WhatsApp size={18} /> {secondary}</a> :
+              <a className="btn btn-secondary-light" data-track-location={trackLocation} onClick={onWAClick} href={secondaryHref} target="_blank" rel="noopener noreferrer"><Icon.WhatsApp size={18} /> {secondary}</a> :
               <a className="btn btn-secondary-light" onClick={(e) => {e.preventDefault();navigate(secondaryHref);}} href={secondaryHref}>{secondary}</a>)
               }
             </div>

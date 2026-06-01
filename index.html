@@ -116,7 +116,21 @@
     gtag('config', 'AW-18195006544');
     window.yvTrack = function(name, params){ try { gtag('event', name, params || {}); } catch(e){} };
 
-    // Click delegation: WhatsApp/tel/mailto con location precisa via data-track-location
+    // Helper de conversión WhatsApp — dispara whatsapp_click con event_label + value
+    // Se llama desde onClick de cada botón de WA, ANTES de que el navegador abra el link.
+    window.yvWAClick = function(location, extra){
+      if (typeof gtag !== 'function') return;
+      try {
+        gtag('event', 'whatsapp_click', Object.assign({
+          event_category: 'whatsapp',
+          event_label: location,
+          value: 1
+        }, extra || {}));
+      } catch(e){}
+    };
+
+    // Click delegation: tel/mailto con location precisa via data-track-location
+    // (WhatsApp NO se delega — cada botón tiene onClick directo con yvWAClick para evitar duplicados)
     document.addEventListener('click', function(e){
       var a = e.target.closest && e.target.closest('a'); if(!a) return;
       var href = a.getAttribute('href') || '';
@@ -126,7 +140,6 @@
         var sec = el.closest('[data-screen-label]');
         return sec ? ('section:' + sec.getAttribute('data-screen-label')) : (el.className || 'link');
       }
-      if (/wa\.me|api\.whatsapp\.com/i.test(href)) window.yvTrack('whatsapp_click', { location: locOf(a) });
       if (/^tel:/i.test(href))    window.yvTrack('phone_click',   { number: href.replace('tel:',''), location: locOf(a) });
       if (/^mailto:/i.test(href)) window.yvTrack('email_click',   { address: href.replace('mailto:',''), location: locOf(a) });
     }, true);
