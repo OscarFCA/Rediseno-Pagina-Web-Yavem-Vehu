@@ -1123,9 +1123,13 @@ function OportunidadesPage() {
 // ============================================================
 // THANK YOU PAGES (post-formulario)
 // ============================================================
-function ThanksCard({ eyebrow, title, body, conversionEvent }) {
+function ThanksCard({ eyebrow, title, body, conversionEvent, adsEvent }) {
   React.useEffect(() => {
     if (conversionEvent && window.yvTrack) window.yvTrack(conversionEvent, { event_category: 'conversion' });
+    // Evento de conversión nativo de Google Ads — solo se envía al tag AW para no duplicar en GA4
+    if (adsEvent && typeof window.gtag === 'function') {
+      try { window.gtag('event', adsEvent, { send_to: 'AW-18195006544' }); } catch(e){}
+    }
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
   return (
@@ -1157,7 +1161,8 @@ function GraciasCotizacionPage() {
         eyebrow="Confirmación de cotización"
         title="Recibimos tu solicitud"
         body={<>Gracias por contactar a <strong style={{ color: 'var(--color-primary)' }}>Yabem-Vehu</strong>. Nuestro equipo de ventas revisará tu información y te contactará en <strong>menos de 24 horas hábiles</strong> con una propuesta personalizada.</>}
-        conversionEvent="conversion_cotizacion" />
+        conversionEvent="conversion_cotizacion"
+        adsEvent="qualify_lead" />
     </div>);
 }
 
