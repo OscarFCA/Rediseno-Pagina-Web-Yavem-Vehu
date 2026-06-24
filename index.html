@@ -129,6 +129,22 @@
       } catch(e){}
     };
 
+    // Ruta SPA actual (hash routing). location.pathname siempre es '/' en este SPA,
+    // así que todos los eventos deben usar yvCurrentPath para atribuirse a la ruta correcta.
+    window.yvCurrentPath = '/';
+    window.yvSetPage = function(path, title){
+      window.yvCurrentPath = path || '/';
+      // Actualiza el contexto de gtag para que TODOS los eventos (incl. user_engagement)
+      // se atribuyan a la ruta del SPA, no a la URL de aterrizaje.
+      try {
+        gtag('set', {
+          page_path: window.yvCurrentPath,
+          page_title: title || document.title,
+          page_location: location.origin + '/#' + window.yvCurrentPath
+        });
+      } catch(e){}
+    };
+
     // Click delegation: tel/mailto con location precisa via data-track-location
     // (WhatsApp NO se delega — cada botón tiene onClick directo con yvWAClick para evitar duplicados)
     document.addEventListener('click', function(e){
@@ -152,7 +168,7 @@
       [25, 50, 75, 90].forEach(function(th){
         if (!yvScrollFired[th] && scrolled * 100 >= th){
           yvScrollFired[th] = true;
-          window.yvTrack('scroll_depth', { percent: th, page_path: location.pathname });
+          window.yvTrack('scroll_depth', { percent: th, page_path: window.yvCurrentPath });
         }
       });
     }
@@ -171,7 +187,7 @@
           var label = en.target.getAttribute('data-screen-label');
           if (!label || yvSectionsSeen[label]) return;
           yvSectionsSeen[label] = true;
-          window.yvTrack('lp_section_view', { section: label, page_path: location.pathname });
+          window.yvTrack('lp_section_view', { section: label, page_path: window.yvCurrentPath });
         });
       }, { threshold: 0.5 });
       document.querySelectorAll('[data-screen-label]').forEach(function(el){ yvSectionObserver.observe(el); });
@@ -198,7 +214,7 @@
         <li><a href="analisis-de-riesgos-empresariales/">Análisis de Riesgos Empresariales</a></li>
         <li><a href="consultoria-en-seguridad-privada/">Consultoría en Seguridad Privada</a></li>
       </ul>
-      <p><strong>Cotiza hoy:</strong> <a href="https://wa.me/525578792146">WhatsApp +52 55 7879 2146</a> · <a href="mailto:ventas@yabem-vehu.com">ventas@yabem-vehu.com</a></p>
+      <p><strong>Cotiza hoy:</strong> <a href="https://wa.me/525578792146" data-track-location="footer_home" onclick="window.yvWAClick && window.yvWAClick('footer_home', {servicio:'generico'})" target="_blank" rel="noopener noreferrer">WhatsApp +52 55 7879 2146</a> · <a href="mailto:ventas@yabem-vehu.com">ventas@yabem-vehu.com</a></p>
     </div>
   </noscript>
 

@@ -63,7 +63,9 @@ function App() {
     document.title = m.t;
     let descTag = document.querySelector('meta[name="description"]');
     if (descTag) descTag.setAttribute('content', m.d);
-    // GA4 pageview por ruta SPA
+    // GA4 pageview por ruta SPA — fija el contexto de página ANTES del page_view
+    // para que scroll/sección/engagement se atribuyan a la ruta correcta (no a '/').
+    if (window.yvSetPage) window.yvSetPage(path, m.t);
     if (window.yvTrack) window.yvTrack('page_view', { page_path: path, page_title: m.t });
     if (window.yvResetTracking) window.yvResetTracking();
   }, [path]);
