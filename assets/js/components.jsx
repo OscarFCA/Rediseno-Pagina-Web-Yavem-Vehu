@@ -505,7 +505,9 @@ const MX_STATES = [
 
 function ZonaMultiSelect({ value, onChange, error, id = 'zona' }) {
   const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState('');
   const ref = useRef(null);
+  const inputRef = useRef(null);
 
   useEffect(() => {
     const onClickOut = (e) => {
@@ -515,6 +517,13 @@ function ZonaMultiSelect({ value, onChange, error, id = 'zona' }) {
     return () => document.removeEventListener('mousedown', onClickOut);
   }, []);
 
+  // Al abrir: enfocar el buscador para que el usuario pueda escribir de inmediato.
+  // Al cerrar: limpiar el filtro.
+  useEffect(() => {
+    if (open) { const t = setTimeout(() => { if (inputRef.current) inputRef.current.focus(); }, 30); return () => clearTimeout(t); }
+    setQuery('');
+  }, [open]);
+
   const toggle = (state) => {
     if (value.includes(state)) {
       onChange(value.filter((s) => s !== state));
@@ -523,8 +532,21 @@ function ZonaMultiSelect({ value, onChange, error, id = 'zona' }) {
     }
   };
 
+  // Normaliza para comparar sin acentos ni mayúsculas (el usuario teclea "mexico" → "México").
+  const norm = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+  const filtered = query ? MX_STATES.filter((s) => norm(s).includes(norm(query))) : MX_STATES;
+
+  const onSearchKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (filtered.length > 0) { toggle(filtered[0]); setQuery(''); }
+    } else if (e.key === 'Escape') {
+      setOpen(false);
+    }
+  };
+
   const summary = value.length === 0 ?
-  'Selecciona uno o más estados' :
+  'Escribe o selecciona uno o más estados' :
   value.length + ' ' + (value.length === 1 ? 'estado seleccionado' : 'estados seleccionados');
 
   return (
@@ -550,7 +572,19 @@ function ZonaMultiSelect({ value, onChange, error, id = 'zona' }) {
       }
       {open &&
       <div className="zona-multiselect__menu" role="listbox">
-          {MX_STATES.map((s) =>
+          <input
+          ref={inputRef}
+          type="text"
+          className="zona-multiselect__search"
+          placeholder="Escribe un estado…"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={onSearchKeyDown}
+          aria-label="Buscar estado"
+          autoComplete="off" />
+          {filtered.length === 0 ?
+        <div className="zona-multiselect__empty">Sin resultados para “{query}”</div> :
+        filtered.map((s) =>
         <label key={s} className={"zona-multiselect__option " + (value.includes(s) ? "is-selected" : "")}>
               <input type="checkbox" checked={value.includes(s)} onChange={() => toggle(s)} />
               <span>{s}</span>
