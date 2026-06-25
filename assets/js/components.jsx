@@ -894,40 +894,52 @@ function PageHeroArt({ variant = 'guardias' }) {
 function PageHero({ eyebrow, title, subtitle, variant, primary = 'Solicitar cotización', primaryHref = '/contacto', secondary, secondaryHref = WA_LINK, secondaryExternal = true, badges, trackLocation = 'hero' }) {
   const onWAClick = () => { if (window.yvWAClick) window.yvWAClick(trackLocation); };
   return (
-    <section className="hero" data-screen-label="Hero">
+    <section className="hero hero--video" data-screen-label="Hero">
+      {/* Fondo full-bleed: video (desktop) + imagen poster (móvil/fallback) — igual que el Hero de la home */}
+      <div className="hero__bg" aria-hidden="true">
+        <img className="hero__bg-poster" src="assets/img/hero-image.webp" alt="" aria-hidden="true" />
+        <video
+          className="hero__bg-video"
+          ref={(el) => {if (el) {el.muted = true;el.defaultMuted = true;el.volume = 0;}}}
+          autoPlay muted loop playsInline preload="metadata"
+          poster="assets/img/hero-image.webp"
+          aria-hidden="true">
+          <source src="assets/video/hero-bg.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div className="hero__overlay" aria-hidden="true"></div>
+      <div className="hero__noise" aria-hidden="true"></div>
+
       <div className="container hero__inner">
-        <div className="hero__grid">
-          <div style={{ width: "100%", maxWidth: "543px" }}>
-            <span className="eyebrow eyebrow--light">{eyebrow}</span>
-            <h1 className="hero__headline">{title}</h1>
-            <p className="hero__subtitle">{subtitle}</p>
-            <div className="hero__ctas">
-              <a className="btn btn-primary" onClick={(e) => {
-                if (primaryHref.startsWith('#')) {
-                  e.preventDefault();
-                  const el = document.querySelector(primaryHref);
-                  if (el) {
-                    const top = el.getBoundingClientRect().top + window.scrollY - 80;
-                    window.scrollTo({ top, behavior: 'smooth' });
-                  }
-                } else if (!primaryHref.startsWith('http')) {
-                  e.preventDefault();
-                  navigate(primaryHref);
+        <div className="hero__content">
+          <span className="eyebrow eyebrow--light">{eyebrow}</span>
+          <h1 className="hero__headline">{title}</h1>
+          <p className="hero__subtitle">{subtitle}</p>
+          <div className="hero__ctas">
+            <a className="btn btn-primary" onClick={(e) => {
+              if (primaryHref.startsWith('#')) {
+                e.preventDefault();
+                const el = document.querySelector(primaryHref);
+                if (el) {
+                  const top = el.getBoundingClientRect().top + window.scrollY - 80;
+                  window.scrollTo({ top, behavior: 'smooth' });
                 }
-              }} href={primaryHref}>{primary}</a>
-              {secondary && (
-              secondaryExternal ?
-              <a className="btn btn-secondary-light" data-track-location={trackLocation} onClick={onWAClick} href={secondaryHref} target="_blank" rel="noopener noreferrer"><Icon.WhatsApp size={18} /> {secondary}</a> :
-              <a className="btn btn-secondary-light" onClick={(e) => {e.preventDefault();navigate(secondaryHref);}} href={secondaryHref}>{secondary}</a>)
+              } else if (!primaryHref.startsWith('http')) {
+                e.preventDefault();
+                navigate(primaryHref);
               }
-            </div>
-            {badges &&
-            <div className="hero__badges">
-                {badges.map((b, i) => <span className="badge-cert" key={i}><span className="dot"></span>{b}</span>)}
-              </div>
+            }} href={primaryHref}>{primary}</a>
+            {secondary && (
+            secondaryExternal ?
+            <a className="btn btn-secondary-light" data-track-location={trackLocation} onClick={onWAClick} href={secondaryHref} target="_blank" rel="noopener noreferrer"><Icon.WhatsApp size={18} /> {secondary}</a> :
+            <a className="btn btn-secondary-light" onClick={(e) => {e.preventDefault();navigate(secondaryHref);}} href={secondaryHref}>{secondary}</a>)
             }
           </div>
-          {variant && <PageHeroArt variant={variant} />}
+          {badges &&
+          <div className="hero__badges">
+              {badges.map((b, i) => <span className="badge-cert" key={i}><span className="dot"></span>{b}</span>)}
+            </div>
+          }
         </div>
       </div>
       <div className="hero__corner"></div>
