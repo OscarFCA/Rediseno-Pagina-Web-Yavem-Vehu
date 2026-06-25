@@ -1106,8 +1106,9 @@ img, video, iframe, svg, picture { max-width: 100%; height: auto; }
   z-index: 1;
   width: 100%;
   box-sizing: border-box;
-  margin-bottom: 6px;
-  padding: 10px 12px;
+  margin-bottom: 8px;
+  min-height: 48px;
+  padding: 12px 14px;
   border: 1px solid var(--color-border);
   border-radius: 8px;
   background: var(--color-white);
@@ -1124,6 +1125,24 @@ img, video, iframe, svg, picture { max-width: 100%; height: auto; }
   font-size: 14px;
   color: #9aa1ac;
   text-align: center;
+}
+/* Móvil: buscador y opciones más amplios para el dedo (área de toque cómoda) */
+@media (max-width: 768px) {
+  .zona-multiselect__search {
+    min-height: 54px;
+    padding: 16px 16px;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  .zona-multiselect__option {
+    min-height: 48px;
+    padding: 12px 12px;
+    font-size: 15px;
+  }
+  .zona-multiselect__option input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+  }
 }
 .form-error {
   font-size: 13px;
